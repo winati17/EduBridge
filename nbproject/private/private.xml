@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/EduBridge/src/login.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/EduBridge/src/edubridge/EduBridge.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/EduBridge/src/Homepage.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/EduBridge/src/Register.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/EduBridgeV2/src/base/janjipage.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/EduBridgeV2/src/base/janjipage2.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/EduBridgeV2/src/base/registerpage.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/EduBridgeV2/src/edubridgev2/EduBridgeV2.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/EduBridgeV2/src/base/login2.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/EduBridgeV2/src/base/janjiwaktu.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/EduBridgeV2/src/base/Homepage.java</file>
         </group>
     </open-files>
 </project-private>
