@@ -8,12 +8,12 @@ package base;
  *
  * @author ASUS
  */
-public class pilihmapeltutorpage extends javax.swing.JFrame {
+public class PilihMapelTutorPage extends javax.swing.JFrame {
 
     /**
      * Creates new form pilihmapeltutorpage
      */
-    public pilihmapeltutorpage() {
+    public PilihMapelTutorPage() {
         initComponents();
     }
 
@@ -54,20 +54,21 @@ public class pilihmapeltutorpage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pilihmapeltutorpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihMapelTutorPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pilihmapeltutorpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihMapelTutorPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pilihmapeltutorpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihMapelTutorPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pilihmapeltutorpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PilihMapelTutorPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new pilihmapeltutorpage().setVisible(true);
+                new PilihMapelTutorPage().setVisible(true);
             }
         });
     }

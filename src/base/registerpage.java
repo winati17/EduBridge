@@ -8,12 +8,11 @@ package base;
  *
  * @author ASUS
  */
-public class registerpage extends javax.swing.JFrame {
-
+public class RegisterPage extends javax.swing.JFrame {
     /**
      * Creates new form registerpage
      */
-    public registerpage() {
+    public RegisterPage() {
         initComponents();
     }
 
@@ -26,119 +25,104 @@ public class registerpage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Username = new javax.swing.JTextField();
-        Username1 = new javax.swing.JTextField();
-        Username2 = new javax.swing.JTextField();
-        Username3 = new javax.swing.JTextField();
-        Username4 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-
-        Username.setBackground(new java.awt.Color(39, 38, 44));
-        Username.setForeground(new java.awt.Color(255, 255, 255));
-        Username.setText("Username");
-        Username.setBorder(null);
-        Username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsernameActionPerformed(evt);
-            }
-        });
+        tf_email = new javax.swing.JTextField();
+        tf_nohp = new javax.swing.JTextField();
+        tf_sekolah = new javax.swing.JTextField();
+        tf_nama = new javax.swing.JTextField();
+        tf_password = new javax.swing.JPasswordField();
+        btn_register = new javax.swing.JButton();
+        bg_register = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Username1.setBackground(new java.awt.Color(39, 38, 44));
-        Username1.setForeground(new java.awt.Color(255, 255, 255));
-        Username1.setText("Email");
-        Username1.setBorder(null);
-        Username1.addActionListener(new java.awt.event.ActionListener() {
+        tf_email.setBackground(new java.awt.Color(39, 38, 44));
+        tf_email.setForeground(new java.awt.Color(255, 255, 255));
+        tf_email.setText("Email");
+        tf_email.setBorder(null);
+        tf_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Username1ActionPerformed(evt);
+                tf_emailActionPerformed(evt);
             }
         });
-        getContentPane().add(Username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 236, 260, 20));
+        getContentPane().add(tf_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 236, 260, 20));
 
-        Username2.setBackground(new java.awt.Color(39, 38, 44));
-        Username2.setForeground(new java.awt.Color(255, 255, 255));
-        Username2.setText("No.HP");
-        Username2.setBorder(null);
-        Username2.addActionListener(new java.awt.event.ActionListener() {
+        tf_nohp.setBackground(new java.awt.Color(39, 38, 44));
+        tf_nohp.setForeground(new java.awt.Color(255, 255, 255));
+        tf_nohp.setText("No.HP");
+        tf_nohp.setBorder(null);
+        tf_nohp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Username2ActionPerformed(evt);
+                tf_nohpActionPerformed(evt);
             }
         });
-        getContentPane().add(Username2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 326, 260, 20));
+        getContentPane().add(tf_nohp, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 326, 260, 20));
 
-        Username3.setBackground(new java.awt.Color(39, 38, 44));
-        Username3.setForeground(new java.awt.Color(255, 255, 255));
-        Username3.setText("Sekolah");
-        Username3.setBorder(null);
-        Username3.addActionListener(new java.awt.event.ActionListener() {
+        tf_sekolah.setBackground(new java.awt.Color(39, 38, 44));
+        tf_sekolah.setForeground(new java.awt.Color(255, 255, 255));
+        tf_sekolah.setText("Sekolah");
+        tf_sekolah.setBorder(null);
+        tf_sekolah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Username3ActionPerformed(evt);
+                tf_sekolahActionPerformed(evt);
             }
         });
-        getContentPane().add(Username3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 296, 260, 20));
+        getContentPane().add(tf_sekolah, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 296, 260, 20));
 
-        Username4.setBackground(new java.awt.Color(39, 38, 44));
-        Username4.setForeground(new java.awt.Color(255, 255, 255));
-        Username4.setText("Nama");
-        Username4.setBorder(null);
-        Username4.addActionListener(new java.awt.event.ActionListener() {
+        tf_nama.setBackground(new java.awt.Color(39, 38, 44));
+        tf_nama.setForeground(new java.awt.Color(255, 255, 255));
+        tf_nama.setText("Nama");
+        tf_nama.setBorder(null);
+        tf_nama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Username4ActionPerformed(evt);
+                tf_namaActionPerformed(evt);
             }
         });
-        getContentPane().add(Username4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 206, 260, 20));
+        getContentPane().add(tf_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 206, 260, 20));
 
-        jPasswordField1.setBackground(new java.awt.Color(39, 38, 44));
-        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(null);
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        tf_password.setBackground(new java.awt.Color(39, 38, 44));
+        tf_password.setForeground(new java.awt.Color(255, 255, 255));
+        tf_password.setText("jPasswordField1");
+        tf_password.setBorder(null);
+        tf_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                tf_passwordActionPerformed(evt);
             }
         });
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 266, 270, 20));
+        getContentPane().add(tf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 266, 270, 20));
 
-        jButton1.setBackground(new java.awt.Color(64, 68, 237));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Register");
-        jButton1.setBorder(null);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 290, 30));
+        btn_register.setBackground(new java.awt.Color(64, 68, 237));
+        btn_register.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_register.setForeground(new java.awt.Color(255, 255, 255));
+        btn_register.setText("Register");
+        btn_register.setBorder(null);
+        getContentPane().add(btn_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 290, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Register.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 560));
+        bg_register.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Register.png"))); // NOI18N
+        getContentPane().add(bg_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameActionPerformed
+    private void tf_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UsernameActionPerformed
+    }//GEN-LAST:event_tf_emailActionPerformed
 
-    private void Username1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Username1ActionPerformed
+    private void tf_nohpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nohpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Username1ActionPerformed
+    }//GEN-LAST:event_tf_nohpActionPerformed
 
-    private void Username2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Username2ActionPerformed
+    private void tf_sekolahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_sekolahActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Username2ActionPerformed
+    }//GEN-LAST:event_tf_sekolahActionPerformed
 
-    private void Username3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Username3ActionPerformed
+    private void tf_namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_namaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Username3ActionPerformed
+    }//GEN-LAST:event_tf_namaActionPerformed
 
-    private void Username4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Username4ActionPerformed
+    private void tf_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Username4ActionPerformed
-
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_tf_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,32 +141,32 @@ public class registerpage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(registerpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(registerpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(registerpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registerpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new registerpage().setVisible(true);
+                new RegisterPage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Username;
-    private javax.swing.JTextField Username1;
-    private javax.swing.JTextField Username2;
-    private javax.swing.JTextField Username3;
-    private javax.swing.JTextField Username4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JLabel bg_register;
+    private javax.swing.JButton btn_register;
+    private javax.swing.JTextField tf_email;
+    private javax.swing.JTextField tf_nama;
+    private javax.swing.JTextField tf_nohp;
+    private javax.swing.JPasswordField tf_password;
+    private javax.swing.JTextField tf_sekolah;
     // End of variables declaration//GEN-END:variables
 }
