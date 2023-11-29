@@ -63,6 +63,11 @@ public class Login extends javax.swing.JFrame {
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setText("login");
         btn_login.setBorder(null);
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_loginActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 365, 270, 30));
 
         btn_register.setBackground(new java.awt.Color(39, 38, 44));
@@ -96,6 +101,11 @@ public class Login extends javax.swing.JFrame {
         frame.dispose();
         new RegisterPage().setVisible(true);
     }//GEN-LAST:event_btn_registerActionPerformed
+
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        frame.dispose();
+        new Homepage().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_loginActionPerformed
 
     /**
      * @param args the command line arguments
