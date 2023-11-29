@@ -26,80 +26,80 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton5 = new javax.swing.JToggleButton();
-        jToggleButton6 = new javax.swing.JToggleButton();
+        btn_kimia = new javax.swing.JToggleButton();
+        btn_fisika = new javax.swing.JToggleButton();
+        btn_ekonomi = new javax.swing.JToggleButton();
+        btn_mtk = new javax.swing.JToggleButton();
+        btn_indo = new javax.swing.JToggleButton();
+        btn_inggris = new javax.swing.JToggleButton();
         bg_PilihMapel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jToggleButton1.setBackground(new java.awt.Color(39, 38, 44));
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 6.png"))); // NOI18N
-        jToggleButton1.setBorder(null);
-        jToggleButton1.setBorderPainted(false);
-        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_kimia.setBackground(new java.awt.Color(39, 38, 44));
+        btn_kimia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 6.png"))); // NOI18N
+        btn_kimia.setBorder(null);
+        btn_kimia.setBorderPainted(false);
+        btn_kimia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_kimia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btn_kimiaActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 90, 90));
+        getContentPane().add(btn_kimia, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 90, 90));
 
-        jToggleButton3.setBackground(new java.awt.Color(39, 38, 44));
-        jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 7.png"))); // NOI18N
-        jToggleButton3.setBorderPainted(false);
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_fisika.setBackground(new java.awt.Color(39, 38, 44));
+        btn_fisika.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 7.png"))); // NOI18N
+        btn_fisika.setBorderPainted(false);
+        btn_fisika.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                btn_fisikaActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 90, 90));
+        getContentPane().add(btn_fisika, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 90, 90));
 
-        jToggleButton2.setBackground(new java.awt.Color(39, 38, 44));
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 8.png"))); // NOI18N
-        jToggleButton2.setBorder(null);
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_ekonomi.setBackground(new java.awt.Color(39, 38, 44));
+        btn_ekonomi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 8.png"))); // NOI18N
+        btn_ekonomi.setBorder(null);
+        btn_ekonomi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                btn_ekonomiActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 90, 90));
+        getContentPane().add(btn_ekonomi, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 90, 90));
 
-        jToggleButton4.setBackground(new java.awt.Color(39, 38, 44));
-        jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 5.png"))); // NOI18N
-        jToggleButton4.setBorder(null);
-        jToggleButton4.setBorderPainted(false);
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+        btn_mtk.setBackground(new java.awt.Color(39, 38, 44));
+        btn_mtk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 5.png"))); // NOI18N
+        btn_mtk.setBorder(null);
+        btn_mtk.setBorderPainted(false);
+        btn_mtk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
+                btn_mtkActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 90, 90));
+        getContentPane().add(btn_mtk, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 90, 90));
 
-        jToggleButton5.setBackground(new java.awt.Color(39, 38, 44));
-        jToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 10.png"))); // NOI18N
-        jToggleButton5.setBorder(null);
-        jToggleButton5.setBorderPainted(false);
-        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+        btn_indo.setBackground(new java.awt.Color(39, 38, 44));
+        btn_indo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 10.png"))); // NOI18N
+        btn_indo.setBorder(null);
+        btn_indo.setBorderPainted(false);
+        btn_indo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton5ActionPerformed(evt);
+                btn_indoActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 90, 90));
+        getContentPane().add(btn_indo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 90, 90));
 
-        jToggleButton6.setBackground(new java.awt.Color(39, 38, 44));
-        jToggleButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 9.png"))); // NOI18N
-        jToggleButton6.setBorder(null);
-        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+        btn_inggris.setBackground(new java.awt.Color(39, 38, 44));
+        btn_inggris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Group 9.png"))); // NOI18N
+        btn_inggris.setBorder(null);
+        btn_inggris.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton6ActionPerformed(evt);
+                btn_inggrisActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 90, 90));
+        getContentPane().add(btn_inggris, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 90, 90));
 
         bg_PilihMapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Tutorbase.png"))); // NOI18N
         getContentPane().add(bg_PilihMapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -107,29 +107,29 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void btn_kimiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kimiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_btn_kimiaActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void btn_ekonomiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ekonomiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_btn_ekonomiActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+    private void btn_fisikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fisikaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    }//GEN-LAST:event_btn_fisikaActionPerformed
 
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+    private void btn_mtkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mtkActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
+    }//GEN-LAST:event_btn_mtkActionPerformed
 
-    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+    private void btn_indoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_indoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton5ActionPerformed
+    }//GEN-LAST:event_btn_indoActionPerformed
 
-    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
+    private void btn_inggrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inggrisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton6ActionPerformed
+    }//GEN-LAST:event_btn_inggrisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,11 +169,11 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg_PilihMapel;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
-    private javax.swing.JToggleButton jToggleButton6;
+    private javax.swing.JToggleButton btn_ekonomi;
+    private javax.swing.JToggleButton btn_fisika;
+    private javax.swing.JToggleButton btn_indo;
+    private javax.swing.JToggleButton btn_inggris;
+    private javax.swing.JToggleButton btn_kimia;
+    private javax.swing.JToggleButton btn_mtk;
     // End of variables declaration//GEN-END:variables
 }

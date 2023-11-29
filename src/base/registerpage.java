@@ -148,7 +148,7 @@ public class RegisterPage extends javax.swing.JFrame {
         murid.setNoTelp(tf_nohp.getText());
         murid.setAsalSekolah(tf_sekolah.getText());
         try {
-            if (!judgeRegister(tf_email.getText(), String.valueOf(tf_password.getPassword()))) {
+            if (!judgeRegister(tf_nama.getText(), tf_email.getText(), String.valueOf(tf_password.getPassword()))) {
                 return;
             }
 
@@ -158,25 +158,30 @@ public class RegisterPage extends javax.swing.JFrame {
                 frame.dispose();
                 new Login().setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, " The account has existed!",
+                JOptionPane.showMessageDialog(null, " Email sudah digunakan!",
                         " The account has existed! ", JOptionPane.ERROR_MESSAGE);
-                System.out.println("akdjada");
             }
 
         } catch (SQLException | ClassNotFoundException ex) {
         }
     }//GEN-LAST:event_btn_registerActionPerformed
 
-    private boolean judgeRegister(String email, String password) throws SQLException, ClassNotFoundException {
+    private boolean judgeRegister(String name, String email, String password) throws SQLException, ClassNotFoundException {
+        if (name.equals("")) {
+            JOptionPane.showMessageDialog(null, " Name tidak boleh kosong! ",
+                    "Name", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
         if (email.equals("")) {
-            JOptionPane.showMessageDialog(null, " Email cannot be empty! ",
+            JOptionPane.showMessageDialog(null, " Email tidak boleh kosong! ",
                     "Email", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
         if (password.equals("")) {
-            JOptionPane.showMessageDialog(null, "Password cannot be empty!",
-                    "Password is empty", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Password tidak boleh kosong!",
+                    "Password", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
