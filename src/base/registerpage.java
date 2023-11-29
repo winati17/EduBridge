@@ -9,11 +9,14 @@ package base;
  * @author ASUS
  */
 public class RegisterPage extends javax.swing.JFrame {
+    private static javax.swing.JFrame frame;
+    
     /**
-     * Creates new form registerpage
+     * Creates new form RegisterPage
      */
     public RegisterPage() {
         initComponents();
+        frame = this;
     }
 
     /**
@@ -96,6 +99,11 @@ public class RegisterPage extends javax.swing.JFrame {
         btn_register.setForeground(new java.awt.Color(255, 255, 255));
         btn_register.setText("Register");
         btn_register.setBorder(null);
+        btn_register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registerActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 290, 30));
 
         bg_register.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Register.png"))); // NOI18N
@@ -123,6 +131,13 @@ public class RegisterPage extends javax.swing.JFrame {
     private void tf_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_passwordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_passwordActionPerformed
+
+    private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
+        // TODO add your handling code here
+        // MuridDao 
+        frame.dispose();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btn_registerActionPerformed
 
     /**
      * @param args the command line arguments

@@ -11,20 +11,21 @@ package entity;
 public class Murid {
     private int id;
     private String nama;
+    private String email;
+    private String kata_sandi;
+    private String asal_sekolah;
     private String notelp;
-    private String pekerjaan;
-    private int hargaperjam;
-    private float rating;
-    private String tentang;
-    
+
+    // Getter and setter methods for 'id'
     public int getId() {
-        return id; //??
+        return id;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
-    
+
+    // Getter and setter methods for 'nama'
     public String getNama() {
         return nama;
     }
@@ -33,44 +34,39 @@ public class Murid {
         this.nama = nama;
     }
 
-    public String getNotelp() {
+    // Getter and setter methods for 'email'
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    // Getter and setter methods for 'kata_sandi'
+    public String getKataSandi() {
+        return kata_sandi;
+    }
+
+    public void setKataSandi(String kata_sandi) {
+        this.kata_sandi = kata_sandi;
+    }
+
+    // Getter and setter methods for 'asal_sekolah'
+    public String getAsalSekolah() {
+        return asal_sekolah;
+    }
+
+    public void setAsalSekolah(String asal_sekolah) {
+        this.asal_sekolah = asal_sekolah;
+    }
+
+    // Getter and setter methods for 'notelp'
+    public String getNoTelp() {
         return notelp;
     }
 
-    public void setNotelp(String notelp) {
+    public void setNoTelp(String notelp) {
         this.notelp = notelp;
     }
-
-    public String getPekerjaan() {
-        return pekerjaan;
-    }
-
-    public void setPekerjaan(String pekerjaan) {
-        this.pekerjaan = pekerjaan;
-    }
-
-    public int getHargaperjam() {
-        return hargaperjam;
-    }
-
-    public void setHargaperjam(int hargaperjam) {
-        this.hargaperjam = hargaperjam;
-    }
-    
-    public float getRating() {
-        return rating;
-    }
-
-    public void setRating(float rating) {
-        this.rating = rating;
-    }
-
-    public String getTentang() {
-        return tentang;
-    }
-    
-    public void setTentang(String tentang) {
-        this.tentang = tentang;
-    }
-    
 }
