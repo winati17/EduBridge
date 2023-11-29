@@ -4,13 +4,20 @@
  */
 package base;
 
+import db.MuridDao;
+import entity.Murid;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
  */
 public class RegisterPage extends javax.swing.JFrame {
+
     private static javax.swing.JFrame frame;
-    
+    private MuridDao muridDao;
+
     /**
      * Creates new form RegisterPage
      */
@@ -85,7 +92,7 @@ public class RegisterPage extends javax.swing.JFrame {
 
         tf_password.setBackground(new java.awt.Color(39, 38, 44));
         tf_password.setForeground(new java.awt.Color(255, 255, 255));
-        tf_password.setText("jPasswordField1");
+        tf_password.setText("Password");
         tf_password.setBorder(null);
         tf_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,46 +140,47 @@ public class RegisterPage extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_passwordActionPerformed
 
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
-        // TODO add your handling code here
-        // MuridDao 
-        frame.dispose();
-        new Login().setVisible(true);
+        muridDao = new MuridDao();
+        Murid murid = new Murid();
+        murid.setNama(tf_nama.getText());
+        murid.setEmail(tf_email.getText());
+        murid.setKataSandi(String.valueOf(tf_password.getPassword()));
+        murid.setNoTelp(tf_nohp.getText());
+        murid.setAsalSekolah(tf_sekolah.getText());
+        try {
+            if (!judgeRegister(tf_email.getText(), String.valueOf(tf_password.getPassword()))) {
+                return;
+            }
+
+            if (!muridDao.isEmailAlreadyExist(tf_email.getText())) {
+                muridDao.createAccount(murid);
+                frame.removeNotify();
+                frame.dispose();
+                new Login().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, " The account has existed!",
+                        " The account has existed! ", JOptionPane.ERROR_MESSAGE);
+                System.out.println("akdjada");
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+        }
     }//GEN-LAST:event_btn_registerActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private boolean judgeRegister(String email, String password) throws SQLException, ClassNotFoundException {
+        if (email.equals("")) {
+            JOptionPane.showMessageDialog(null, " Email cannot be empty! ",
+                    "Email", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegisterPage().setVisible(true);
-            }
-        });
+        if (password.equals("")) {
+            JOptionPane.showMessageDialog(null, "Password cannot be empty!",
+                    "Password is empty", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

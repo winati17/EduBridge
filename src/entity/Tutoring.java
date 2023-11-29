@@ -3,18 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package entity;
+
 import java.util.Date;
+
 /**
  *
  * @author winat
  */
 public class Tutoring {
+
     private int id;
     private String matpel_pilihan;
-    private int id_murid;
-    private int id_tutor;
+    private Murid murid;
+    private Tutor tutor;
     private int jumlah_sesi;
     private Date jadwal;
+    private int biaya;
 
     // Getter and setter methods for 'id'
     public int getId() {
@@ -35,21 +39,21 @@ public class Tutoring {
     }
 
     // Getter and setter methods for 'id_murid'
-    public int getIdMurid() {
-        return id_murid;
+    public Murid getMurid() {
+        return murid;
     }
 
-    public void setIdMurid(int id_murid) {
-        this.id_murid = id_murid;
+    public void setMurid(Murid murid) {
+        this.murid = murid;
     }
 
     // Getter and setter methods for 'id_tutor'
-    public int getIdTutor() {
-        return id_tutor;
+    public Tutor getTutor() {
+        return this.tutor;
     }
 
-    public void setIdTutor(int id_tutor) {
-        this.id_tutor = id_tutor;
+    public void setTutor(Tutor nama_tutor) {
+        this.tutor = nama_tutor;
     }
 
     // Getter and setter methods for 'jumlah_sesi'
@@ -68,5 +72,13 @@ public class Tutoring {
 
     public void setJadwal(Date jadwal) {
         this.jadwal = jadwal;
+    }
+
+    public int getBiaya() {
+        return biaya;
+    }
+
+    public void setBiaya(int biaya) {
+        this.biaya = biaya;
     }
 }

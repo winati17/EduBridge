@@ -9,6 +9,7 @@ package entity;
  * @author winat
  */
 public class Tutor {
+
     private int id;
     private String nama;
     private String notelp;
@@ -16,15 +17,33 @@ public class Tutor {
     private int hargaperjam;
     private float rating;
     private String tentang;
-    
+
+    public Tutor() {
+    }
+
+    public Tutor(int id, String nama) {
+        this.id = id;
+        this.nama = nama;
+    }
+
+    public Tutor(int id, String nama, String notelp, String pekerjaan, int hargaperjam, float rating, String tentang) {
+        this.id = id;
+        this.nama = nama;
+        this.notelp = notelp;
+        this.pekerjaan = pekerjaan;
+        this.hargaperjam = hargaperjam;
+        this.rating = rating;
+        this.tentang = tentang;
+    }
+
     public int getId() {
         return id; //??
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public String getNama() {
         return nama;
     }
@@ -56,7 +75,7 @@ public class Tutor {
     public void setHargaPerJam(int hargaperjam) {
         this.hargaperjam = hargaperjam;
     }
-    
+
     public float getRating() {
         return rating;
     }
@@ -68,9 +87,9 @@ public class Tutor {
     public String getTentang() {
         return tentang;
     }
-    
+
     public void setTentang(String tentang) {
         this.tentang = tentang;
     }
-    
+
 }

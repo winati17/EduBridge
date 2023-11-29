@@ -4,12 +4,22 @@
  */
 package base;
 
+import db.MuridDao;
+import entity.Murid;
+import java.util.Arrays;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
  */
 public class Login extends javax.swing.JFrame {
+
+    private MuridDao muridDao;
+    private Murid murid;
     private static javax.swing.JFrame frame;
+
     /**
      * Creates new form login2
      */
@@ -27,7 +37,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tf_username = new javax.swing.JTextField();
+        tf_email = new javax.swing.JTextField();
         tf_password = new javax.swing.JPasswordField();
         btn_login = new javax.swing.JButton();
         btn_register = new javax.swing.JButton();
@@ -36,16 +46,16 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tf_username.setBackground(new java.awt.Color(39, 38, 44));
-        tf_username.setForeground(new java.awt.Color(255, 255, 255));
-        tf_username.setText("Username");
-        tf_username.setBorder(null);
-        tf_username.addActionListener(new java.awt.event.ActionListener() {
+        tf_email.setBackground(new java.awt.Color(39, 38, 44));
+        tf_email.setForeground(new java.awt.Color(255, 255, 255));
+        tf_email.setText("Email");
+        tf_email.setBorder(null);
+        tf_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_usernameActionPerformed(evt);
+                tf_emailActionPerformed(evt);
             }
         });
-        getContentPane().add(tf_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 260, 20));
+        getContentPane().add(tf_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 260, 20));
 
         tf_password.setBackground(new java.awt.Color(39, 38, 44));
         tf_password.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,9 +98,9 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tf_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_usernameActionPerformed
+    private void tf_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_usernameActionPerformed
+    }//GEN-LAST:event_tf_emailActionPerformed
 
     private void tf_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_passwordActionPerformed
         // TODO add your handling code here:
@@ -103,8 +113,18 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_registerActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        frame.dispose();
-        new Homepage().setVisible(true);        // TODO add your handling code here:
+        muridDao = new MuridDao();
+        System.out.println(tf_email.getText() + " " + String.valueOf(tf_password.getPassword()));
+        murid = muridDao.getAccount(tf_email.getText(), String.valueOf(tf_password.getText()));
+        if (murid == null) {
+            JOptionPane pane = new JOptionPane("User name or password error.");
+            JDialog dialog = pane.createDialog("Warning");
+            dialog.setVisible(true);
+        } else {
+            frame.removeNotify();
+            frame.dispose();
+            new Homepage(murid).setVisible(true);
+        }
     }//GEN-LAST:event_btn_loginActionPerformed
 
     /**
@@ -138,11 +158,8 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
         });
     }
 
@@ -150,7 +167,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_register;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField tf_email;
     private javax.swing.JPasswordField tf_password;
-    private javax.swing.JTextField tf_username;
     // End of variables declaration//GEN-END:variables
 }

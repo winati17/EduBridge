@@ -3,28 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package db;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 /**
  *
  * @author winat
  */
 public class DB {
-    private String protocol = "jdbc:derby:";
-    private Connection conn;
 
-    public DB() {
-        String driver = "org.apache.derby.jdbc.EmbeddedDriver";
-        try {
-            String dbName = "edubridge"; // the name of the database
-            this.conn = DriverManager.getConnection(protocol + dbName
-                    + ";create=false");
-            Class.forName(driver);    
-        } catch (SQLException | ClassNotFoundException ex) {
-        }
-    }
+    Connection connect;
+
     public Connection getConnection() {
-        return conn;
+
+        String url, user, pwd;
+        url = "jdbc:mysql://localhost/edubridge";
+        user = "root";
+        pwd = "";
+
+        try {
+            connect = DriverManager.getConnection(url, user, pwd);
+        } catch (SQLException e) {
+        }
+        return connect;
+
     }
 }

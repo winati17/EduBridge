@@ -9,12 +9,30 @@ package entity;
  * @author winat
  */
 public class Murid {
+
     private int id;
     private String nama;
     private String email;
     private String kata_sandi;
     private String asal_sekolah;
     private String notelp;
+
+    public Murid() {
+    }
+
+    public Murid(int id, String nama) {
+        this.id = id;
+        this.nama = nama;
+    }
+
+    public Murid(int id, String nama, String email, String kata_sandi, String asal_sekolah, String notelp) {
+        this.id = id;
+        this.nama = nama;
+        this.email = email;
+        this.kata_sandi = kata_sandi;
+        this.asal_sekolah = asal_sekolah;
+        this.notelp = notelp;
+    }
 
     // Getter and setter methods for 'id'
     public int getId() {

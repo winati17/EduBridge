@@ -1,138 +1,64 @@
-///*
-// * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-// * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
-// */
-//package db;
-//
-//import java.awt.BorderLayout;
-//import java.awt.Color;
-//import java.awt.GridLayout;
-//import java.awt.Image;
-//import java.awt.Toolkit;
-//import java.awt.event.ActionEvent;
-//import java.text.DecimalFormat;
-//import java.util.List;
-//import javax.swing.BorderFactory;
-//import javax.swing.ImageIcon;
-//import javax.swing.JButton;
-//import javax.swing.JFrame;
-//import javax.swing.JLabel;
-//import javax.swing.JOptionPane;
-//import javax.swing.JPanel;
-//import javax.swing.JScrollPane;
-//import javax.swing.ScrollPaneConstants;
-//import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-//import javax.swing.border.Border;
-//
-///**
-// *
-// * @author winat
-// */
-//public class TutorDao {
-//    
-//    private OrderDao orderDao;
-//    private String account;
-//    private List<Order> orderList;
-//    private MovieDao movieDao;
-//    private TimetableDao timetableDao;
-//    private JFrame frame;
-//    private SeatDao seatDao;
-//
-//    public TutorDaoanel(String account) {
-//        frame = this;
-//        this.account = account;
-//        orderDao = new OrderDao();
-//        movieDao = new MovieDao();
-//        timetableDao = new TimetableDao();
-//        seatDao = new SeatDao();
-//        orderList = orderDao.getOrder(account);
-//
-//        JScrollPane js = new JScrollPane(addOrderList(), ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-//        this.setContentPane(js);
-//        this.setBounds(((Toolkit.getDefaultToolkit().getScreenSize().width) / 2) - 300,
-//                ((Toolkit.getDefaultToolkit().getScreenSize().height) / 2) - 350, 500, 700);
-//        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-//    }
-//
-//    /**
-//     *
-//     * @return orderPanel
-//     */
-//    public JPanel addOrderList() {
-//        JPanel orderPanel = new JPanel();
-//        orderPanel.setLayout(new GridLayout(0, 1));
-//        for (Order order : orderList) {
-//            orderPanel.add(addOrderItem(order));
-//        }
-//        if (orderList.size() < 6) {
-//            for (int i = 0; i < 6 - orderList.size(); i++) {
-//                orderPanel.add(new JPanel());
-//            }
-//        }
-//        return orderPanel;
-//    }
-//
-//    /**
-//     *
-//     * @param order
-//     * @return orderItemPanel
-//     */
-//    public JPanel addOrderItem(Order order) {
-//        JPanel orderItemPanel = new JPanel();
-//        int seatId = order.getSeatId();
-//
-//        orderItemPanel.setLayout(new BorderLayout());
-//        Border border = BorderFactory.createLineBorder(Color.GRAY);
-//        orderItemPanel.setBorder(border);
-//        orderItemPanel.setBackground(Color.ORANGE);
-//        Movie movie = movieDao.getMovieById(order.getMovieId());
-//        Timetable timetable = timetableDao.getTimetableById(order.getTimetableId());
-//        //image
-//        ImageIcon image = new ImageIcon(movie.getPicUrl());
-//        image.setImage(image.getImage().getScaledInstance(75, 90, Image.SCALE_DEFAULT));
-//        JLabel imageLabel = new JLabel(image);
-//        orderItemPanel.add("West", imageLabel);
-//
-//        JPanel infoPanel = new JPanel();
-//        infoPanel.setLayout(new BorderLayout());
-//        //movie name
-//        JLabel nameLabel = new JLabel(movie.getName());
-//        infoPanel.add("North", nameLabel);
-//        //time
-//        JLabel timeLabel = new JLabel(timetable.getStartTime() + "-" + timetable.getEndTime());
-//        infoPanel.add("Center", timeLabel);
-//        //seat
-//        JLabel seatLabel = new JLabel("Room: " + timetable.getRoomId() + "    Seat: " + "Row " + (seatId / 10 + 1) + " Column " + (seatId % 10 + 1));
-//        infoPanel.add("South", seatLabel);
-//        //price
-//        DecimalFormat dcmFmt = new DecimalFormat("0.0");
-//        String priceStr = dcmFmt.format(timetable.getPrice());
-//        JLabel priceLabel = new JLabel("￥" + priceStr);
-//
-//        orderItemPanel.add("South", priceLabel);
-//
-//        orderItemPanel.add("Center", infoPanel);
-//
-//        //button
-//        JButton button = new JButton("Refund");
-//        button.setBackground(Color.WHITE);
-//        button.addActionListener((ActionEvent e) -> {
-//            int flag = JOptionPane.showConfirmDialog(null, "Are you sure to refund the ticket?", "Refund", JOptionPane.YES_NO_OPTION);
-//            if (flag == 0) {
-//                //delete order
-//                orderDao.deleteOrderById(order.getId());
-//                //delete seat
-//                seatDao.deleteSeat(order.getSeatId(), order.getRoomId(), order.getTimetableId());
-//                frame.dispose();
-//                new MyOrderPanel(account).setVisible(true);
-//                
-//            } else {
-//                System.out.println("no");
-//            }
-//        });
-//        orderItemPanel.add("East", button);
-//
-//        return orderItemPanel;
-//    }
-//
-//}
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package db;
+
+import entity.Tutor;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author winat
+ */
+public class TutorDao {
+
+    private final DB db;
+    private final Connection conn;
+
+    public TutorDao() {
+        db = new DB();
+        conn = db.getConnection();
+    }
+
+    public boolean insert(Tutor tutor) {
+        String sql = "insert into tutor(nama,notelp,pekerjaan,tentang,hargaperjam,rating) values (?,?,?,?,?,?,?)";
+        PreparedStatement ps;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, tutor.getNama());
+            ps.setString(2, tutor.getNoTelp());
+            ps.setString(3, tutor.getPekerjaan());
+            ps.setString(4, tutor.getTentang());
+            ps.setInt(5, tutor.getHargaPerJam());
+            ps.setFloat(6, tutor.getRating());
+            ps.execute();
+        } catch (SQLException ex) {
+        }
+        return true;
+    }
+
+    public List getAllTutor() throws SQLException {
+        String sql = "select * from tutor";
+        ResultSet rs = conn.createStatement().executeQuery(sql);
+        List<Tutor> list = new ArrayList<>();
+        while (rs.next()) {
+            Tutor tutor = new Tutor();
+            tutor.setId(rs.getInt("id"));
+            tutor.setNama(rs.getString("name"));
+            tutor.setNoTelp(rs.getString("notelp"));
+            tutor.setPekerjaan(rs.getString("pekerjaan"));
+            tutor.setTentang(rs.getString("asal_sekolah"));
+            tutor.setRating(rs.getFloat("rating"));
+            tutor.setHargaPerJam(rs.getInt("hargaperjam"));
+            list.add(tutor);
+        }
+        return list;
+    }
+
+}
