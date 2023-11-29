@@ -26,18 +26,52 @@ public class PembayaranPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tagihanpembayaran = new javax.swing.JTextArea();
+        btn_paynow = new javax.swing.JButton();
+        bg_pembayaran = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Pembayaran.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jScrollPane1.setBackground(new java.awt.Color(85, 85, 85));
+        jScrollPane1.setOpaque(false);
+
+        tagihanpembayaran.setBackground(new java.awt.Color(85, 85, 85));
+        tagihanpembayaran.setColumns(20);
+        tagihanpembayaran.setForeground(new java.awt.Color(255, 255, 255));
+        tagihanpembayaran.setRows(5);
+        tagihanpembayaran.setBorder(null);
+        tagihanpembayaran.setOpaque(false);
+        jScrollPane1.setViewportView(tagihanpembayaran);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 350, 180));
+
+        btn_paynow.setBackground(new java.awt.Color(79, 80, 131));
+        btn_paynow.setForeground(new java.awt.Color(255, 255, 255));
+        btn_paynow.setText("Pay Now");
+        btn_paynow.setBorder(null);
+        btn_paynow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_paynowActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_paynow, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 140, 50));
+
+        bg_pembayaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/PembayaranPage.png"))); // NOI18N
+        getContentPane().add(bg_pembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_paynowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paynowActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_paynowActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel bg_pembayaran;
+    private javax.swing.JButton btn_paynow;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea tagihanpembayaran;
     // End of variables declaration//GEN-END:variables
 }
