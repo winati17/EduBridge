@@ -4,20 +4,40 @@
  */
 package base;
 
+import entity.Murid;
+import entity.Tutor;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ASUS
  */
 public class JanjiWaktu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form janjiwaktu
-     */
+    private Murid murid;
+    private String matapelajaran;
+    private int jam;
+    private Date tanggal;
+    private Tutor tutor;
+    private static javax.swing.JFrame frame;
+
     public JanjiWaktu() {
         initComponents();
-       txtTanggal.setBackground(new java.awt.Color(0,0,0,1));
-       txtBulan.setBackground(new java.awt.Color(0,0,0,1));
-       txtTahun.setBackground(new java.awt.Color(0,0,0,1));
+        frame = this;
+    }
+
+    public JanjiWaktu(Murid murid, Tutor tutor, String matapelajaran) {
+        this();
+        this.murid = murid;
+        this.tutor = tutor;
+        this.matapelajaran = matapelajaran;
+        l_tutor.setText(tutor.getNama());
     }
 
     /**
@@ -29,29 +49,19 @@ public class JanjiWaktu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tf_jam = new javax.swing.JTextField();
-        tf_tanggal = new javax.swing.JTextField();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        tf_tanggal = new javax.swing.JFormattedTextField(dateFormat);
         l_tutor = new javax.swing.JLabel();
+        tf_jam = new javax.swing.JTextField();
         btn_booknow = new javax.swing.JButton();
         bg_JanjiWaktu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tf_jam.setBackground(new java.awt.Color(39, 38, 44));
-        tf_jam.setForeground(new java.awt.Color(255, 255, 255));
-        tf_jam.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        tf_jam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_jamActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tf_jam, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 160, 20));
-
         tf_tanggal.setBackground(new java.awt.Color(39, 38, 44));
         tf_tanggal.setForeground(new java.awt.Color(255, 255, 255));
-        tf_tanggal.setText(" yyyy-mm-dd");
-        tf_tanggal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        tf_tanggal.setText("yyyy-MM-dd");
         tf_tanggal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_tanggalActionPerformed(evt);
@@ -63,10 +73,24 @@ public class JanjiWaktu extends javax.swing.JFrame {
         l_tutor.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(l_tutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 150, 20));
 
+        tf_jam.setBackground(new java.awt.Color(39, 38, 44));
+        tf_jam.setForeground(new java.awt.Color(255, 255, 255));
+        tf_jam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_jamActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tf_jam, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 160, -1));
+
         btn_booknow.setBackground(new java.awt.Color(46, 47, 102));
         btn_booknow.setForeground(new java.awt.Color(255, 255, 255));
         btn_booknow.setText("Book Now");
         btn_booknow.setBorder(null);
+        btn_booknow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_booknowActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_booknow, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, 160, 30));
 
         bg_JanjiWaktu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Janji waktu2.png"))); // NOI18N
@@ -75,19 +99,63 @@ public class JanjiWaktu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tf_tanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_tanggalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_tanggalActionPerformed
+
     private void tf_jamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_jamActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_jamActionPerformed
 
-    private void tf_tanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_tanggalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_tanggalActionPerformed
+    private void btn_booknowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_booknowActionPerformed
+        try {
+            // TODO add your handling code here:
+            if (!judgeRegister(tf_tanggal.getText(), tf_jam.getText())) {
+                return;
+            }
+
+            jam = Integer.parseInt(tf_jam.getText());
+            tanggal = new SimpleDateFormat("yyyy-MM-dd").parse(tf_tanggal.getText());
+
+            frame.dispose();
+            new PembayaranPage(murid, tutor, matapelajaran, jam, tanggal).setVisible(true);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(JanjiWaktu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, " Tanggal harus dalam format YYYY-MM-DD!",
+                    "Format Tanggal", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btn_booknowActionPerformed
+
+    private boolean judgeRegister(String tanggal, String jam) throws SQLException, ClassNotFoundException {
+        if (tanggal.equals("")) {
+            JOptionPane.showMessageDialog(null, " Tanggal tidak boleh kosong! ",
+                    "Tanggal", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (jam.equals("")) {
+            JOptionPane.showMessageDialog(null, " Jam tidak boleh kosong! ",
+                    "Jam", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        try {
+            Integer.valueOf(jam);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, " Jam tidak boleh kosong! ",
+                    "Jam", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg_JanjiWaktu;
     private javax.swing.JButton btn_booknow;
     private javax.swing.JLabel l_tutor;
     private javax.swing.JTextField tf_jam;
-    private javax.swing.JTextField tf_tanggal;
+    private javax.swing.JFormattedTextField tf_tanggal;
     // End of variables declaration//GEN-END:variables
 }

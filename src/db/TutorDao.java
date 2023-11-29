@@ -26,21 +26,44 @@ public class TutorDao {
         conn = db.getConnection();
     }
 
-    public boolean insert(Tutor tutor) {
+    public boolean create(Tutor tutor) throws SQLException {
         String sql = "insert into tutor(nama,notelp,pekerjaan,tentang,hargaperjam,rating) values (?,?,?,?,?,?,?)";
         PreparedStatement ps;
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, tutor.getNama());
-            ps.setString(2, tutor.getNoTelp());
-            ps.setString(3, tutor.getPekerjaan());
-            ps.setString(4, tutor.getTentang());
-            ps.setInt(5, tutor.getHargaPerJam());
-            ps.setFloat(6, tutor.getRating());
-            ps.execute();
-        } catch (SQLException ex) {
-        }
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, tutor.getNama());
+        ps.setString(2, tutor.getNoTelp());
+        ps.setString(3, tutor.getPekerjaan());
+        ps.setString(4, tutor.getTentang());
+        ps.setInt(5, tutor.getHargaPerJam());
+        ps.setFloat(6, tutor.getRating());
+        ps.execute();
+
         return true;
+    }
+
+    public Tutor getOneTutor(int id) throws SQLException {
+        PreparedStatement ps;
+        ResultSet rs;
+
+        ps = conn.prepareStatement("select * from `tutor` where id=?");
+        ps.setInt(1, id);
+        rs = ps.executeQuery();
+
+        if (!rs.next()) {
+            return null;
+        }
+
+        Tutor tutor = new Tutor();
+
+        tutor.setId(rs.getInt("id"));
+        tutor.setNama(rs.getString("nama"));
+        tutor.setNoTelp(rs.getString("notelp"));
+        tutor.setPekerjaan(rs.getString("pekerjaan"));
+        tutor.setTentang(rs.getString("tentang"));
+        tutor.setRating(rs.getFloat("rating"));
+        tutor.setHargaPerJam(rs.getInt("hargaperjam"));
+
+        return tutor;
     }
 
     public List getAllTutor() throws SQLException {
@@ -50,10 +73,10 @@ public class TutorDao {
         while (rs.next()) {
             Tutor tutor = new Tutor();
             tutor.setId(rs.getInt("id"));
-            tutor.setNama(rs.getString("name"));
+            tutor.setNama(rs.getString("nama"));
             tutor.setNoTelp(rs.getString("notelp"));
             tutor.setPekerjaan(rs.getString("pekerjaan"));
-            tutor.setTentang(rs.getString("asal_sekolah"));
+            tutor.setTentang(rs.getString("tentang"));
             tutor.setRating(rs.getFloat("rating"));
             tutor.setHargaPerJam(rs.getInt("hargaperjam"));
             list.add(tutor);

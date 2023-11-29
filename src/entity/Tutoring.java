@@ -16,7 +16,7 @@ public class Tutoring {
     private String matpel_pilihan;
     private Murid murid;
     private Tutor tutor;
-    private int jumlah_sesi;
+    private int jam;
     private Date jadwal;
     private int biaya;
 
@@ -57,12 +57,12 @@ public class Tutoring {
     }
 
     // Getter and setter methods for 'jumlah_sesi'
-    public int getJumlahSesi() {
-        return jumlah_sesi;
+    public int getJam() {
+        return jam;
     }
 
-    public void setJumlahSesi(int jumlah_sesi) {
-        this.jumlah_sesi = jumlah_sesi;
+    public void setJam(int jumlah_sesi) {
+        this.jam = jumlah_sesi;
     }
 
     // Getter and setter methods for 'jadwal'

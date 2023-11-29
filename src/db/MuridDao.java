@@ -26,65 +26,49 @@ public class MuridDao {
         conn = db.getConnection();
     }
 
-    public boolean createAccount(Murid murid) {
+    public boolean createAccount(Murid murid) throws SQLException {
         String sql = "insert into murid(nama,email,kata_sandi,notelp,asal_sekolah) values (?,?,?,?,?)";
         PreparedStatement ps;
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, murid.getNama());
-            ps.setString(2, murid.getEmail());
-            ps.setString(3, murid.getKataSandi());
-            ps.setString(4, murid.getNoTelp());
-            ps.setString(5, murid.getAsalSekolah());
-            ps.execute();
-        } catch (SQLException ex) {
-        }
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, murid.getNama());
+        ps.setString(2, murid.getEmail());
+        ps.setString(3, murid.getKataSandi());
+        ps.setString(4, murid.getNoTelp());
+        ps.setString(5, murid.getAsalSekolah());
+        ps.execute();
         return true;
     }
 
-    public Murid getAccount(String email, String password) {
+    public Murid getAccount(String email, String password) throws SQLException {
         PreparedStatement ps;
         ResultSet rs;
-        System.out.println("masuk");
 
-        try {
-            ps = conn.prepareStatement("select * from murid where email=? and kata_sandi=?");
-            ps.setString(1, email);
-            ps.setString(2, password);
-            rs = ps.executeQuery();
-            System.out.println(rs);
+        ps = conn.prepareStatement("select * from murid where email=? and kata_sandi=?");
+        ps.setString(1, email);
+        ps.setString(2, password);
+        rs = ps.executeQuery();
 
-            if (!rs.next()) {
-                return null;
-            }
-
-            Murid murid = new Murid();
-
-            murid.setId(rs.getInt("id"));
-            murid.setNama(rs.getString("nama"));
-            murid.setEmail(rs.getString("email"));
-            murid.setKataSandi(rs.getString("kata_sandi"));
-            murid.setNoTelp(rs.getString("notelp"));
-            murid.setAsalSekolah(rs.getString("asal_sekolah"));
-            System.out.println(rs);
-
-            return murid;
-        } catch (SQLException e1) {
+        if (!rs.next()) {
+            return null;
         }
-        return null;
+
+        Murid murid = new Murid();
+
+        murid.setId(rs.getInt("id"));
+        murid.setNama(rs.getString("nama"));
+        murid.setEmail(rs.getString("email"));
+        murid.setKataSandi(rs.getString("kata_sandi"));
+        murid.setNoTelp(rs.getString("notelp"));
+        murid.setAsalSekolah(rs.getString("asal_sekolah"));
+
+        return murid;
     }
 
-    public boolean isEmailAlreadyExist(String email) {
+    public boolean isEmailAlreadyExist(String email) throws SQLException {
         String sql = "select * from murid where email = " + email;
         ResultSet rs;
-        try {
-            rs = conn.createStatement().executeQuery(sql);
-            if (!rs.next()) {
-                return false;
-            }
-        } catch (SQLException ex) {
-        }
-        return true;
+        rs = conn.createStatement().executeQuery(sql);
+        return rs.next();
     }
 
     public List getAllAccount() throws SQLException {

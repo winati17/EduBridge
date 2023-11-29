@@ -4,17 +4,43 @@
  */
 package base;
 
+import entity.Murid;
+import entity.Tutor;
+import java.awt.HeadlessException;
+import java.util.Date;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+
 /**
  *
  * @author ASUS
  */
 public class DetailTutor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form janjipage2
-     */
+    private Murid murid;
+    private String matapelajaran;
+    private Tutor tutor;
+
+    private static javax.swing.JFrame frame;
+
     public DetailTutor() {
         initComponents();
+        frame = this;
+    }
+
+    public DetailTutor(Murid murid, Tutor tutor, String matapelajaran) {
+        this();
+        
+        this.murid = murid;
+        this.matapelajaran = matapelajaran;
+        this.tutor = tutor;
+
+        jLabel10.setText(tutor.getNoTelp());
+        jLabel9.setText(tutor.getTentang());
+        jLabel9.setText(tutor.getTentang());
+        jLabel7.setText("Rp. " + tutor.getHargaPerJam());
     }
 
     /**
@@ -65,6 +91,11 @@ public class DetailTutor extends javax.swing.JFrame {
         btn_back.setForeground(new java.awt.Color(255, 255, 255));
         btn_back.setText("Back");
         btn_back.setBorderPainted(false);
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 120, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -109,11 +140,19 @@ public class DetailTutor extends javax.swing.JFrame {
 
     private void btn_bookascheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bookascheduleActionPerformed
         // TODO add your handling code here:
+        frame.dispose();
+        new JanjiWaktu(murid, tutor, matapelajaran).setVisible(true);
     }//GEN-LAST:event_btn_bookascheduleActionPerformed
 
     private void btn_paynowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paynowActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_paynowActionPerformed
+
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        // TODO add your handling code here:
+        frame.dispose();
+        new PilihMapelTutorPage(murid).setVisible(true);
+    }//GEN-LAST:event_btn_backActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg_detailtutor;

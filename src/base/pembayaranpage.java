@@ -4,17 +4,43 @@
  */
 package base;
 
+import db.TutoringDao;
+import entity.Murid;
+import entity.Tutor;
+import entity.Tutoring;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
  */
 public class PembayaranPage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form pembayaranpage
-     */
+    private Murid murid;
+    private Tutor tutor;
+    private String matapelajaran;
+    private int jam;
+    private Date tanggal;
+    private TutoringDao tutoringDao;
+    private static javax.swing.JFrame frame;
+
     public PembayaranPage() {
         initComponents();
+        frame = this;
+    }
+
+    public PembayaranPage(Murid murid, Tutor tutor, String matapelajaran, int jam, Date tanggal) {
+        this();
+        this.murid = murid;
+        this.tutor = tutor;
+        this.matapelajaran = matapelajaran;
+        this.jam = jam;
+        this.tanggal = tanggal;
+        tagihanpembayaran.append("Rp. " + String.valueOf(tutor.getHargaPerJam() * jam));
     }
 
     /**
@@ -39,6 +65,7 @@ public class PembayaranPage extends javax.swing.JFrame {
 
         tagihanpembayaran.setBackground(new java.awt.Color(85, 85, 85));
         tagihanpembayaran.setColumns(20);
+        tagihanpembayaran.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         tagihanpembayaran.setForeground(new java.awt.Color(255, 255, 255));
         tagihanpembayaran.setRows(5);
         tagihanpembayaran.setBorder(null);
@@ -65,7 +92,24 @@ public class PembayaranPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_paynowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paynowActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            tutoringDao = new TutoringDao();
+            Tutoring t = new Tutoring();
+            t.setBiaya(jam * tutor.getHargaPerJam());
+            t.setJadwal(tanggal);
+            t.setJam(jam);
+            t.setMatpelPilihan(matapelajaran);
+            t.setMurid(murid);
+            t.setTutor(tutor);
+            tutoringDao.insert(t);
+            JOptionPane.showMessageDialog(null, "Pembayaran sukses!",
+                    "Selamat!", JOptionPane.ERROR_MESSAGE);
+            frame.dispose();
+            new Homepage(murid).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(PembayaranPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_paynowActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

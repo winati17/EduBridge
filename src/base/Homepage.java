@@ -35,6 +35,7 @@ public class Homepage extends javax.swing.JFrame {
     private void initComponents() {
 
         btn_booknow = new javax.swing.JButton();
+        btn_orderhistory = new javax.swing.JButton();
         home = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jembatan = new javax.swing.JTextArea();
@@ -56,7 +57,22 @@ public class Homepage extends javax.swing.JFrame {
                 btn_booknowActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_booknow, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 100, 40));
+        getContentPane().add(btn_booknow, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 140, 40));
+
+        btn_orderhistory.setBackground(new java.awt.Color(46, 47, 102));
+        btn_orderhistory.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        btn_orderhistory.setForeground(new java.awt.Color(255, 255, 255));
+        btn_orderhistory.setText("Order History");
+        btn_orderhistory.setBorder(null);
+        btn_orderhistory.setBorderPainted(false);
+        btn_orderhistory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_orderhistory.setFocusPainted(false);
+        btn_orderhistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_orderhistoryActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_orderhistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 140, 40));
 
         home.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
         home.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,13 +107,18 @@ public class Homepage extends javax.swing.JFrame {
     private void btn_booknowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_booknowActionPerformed
         // TODO add your handling code here:
         frame.dispose();
-        new PilihMapelTutorPage().setVisible(true);
+        new PilihMapelTutorPage(murid).setVisible(true);
     }//GEN-LAST:event_btn_booknowActionPerformed
+
+    private void btn_orderhistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_orderhistoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_orderhistoryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg_homepage;
     private javax.swing.JButton btn_booknow;
+    private javax.swing.JButton btn_orderhistory;
     private javax.swing.JLabel home;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jembatan;

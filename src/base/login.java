@@ -6,7 +6,9 @@ package base;
 
 import db.MuridDao;
 import entity.Murid;
-import java.util.Arrays;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -113,17 +115,21 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_registerActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        muridDao = new MuridDao();
-        System.out.println(tf_email.getText() + " " + String.valueOf(tf_password.getPassword()));
-        murid = muridDao.getAccount(tf_email.getText(), String.valueOf(tf_password.getText()));
-        if (murid == null) {
-            JOptionPane pane = new JOptionPane("User name or password error.");
-            JDialog dialog = pane.createDialog("Warning");
-            dialog.setVisible(true);
-        } else {
-            frame.removeNotify();
-            frame.dispose();
-            new Homepage(murid).setVisible(true);
+        try {
+            muridDao = new MuridDao();
+            System.out.println(tf_email.getText() + " " + String.valueOf(tf_password.getPassword()));
+            murid = muridDao.getAccount(tf_email.getText(), String.valueOf(tf_password.getText()));
+            if (murid == null) {
+                JOptionPane pane = new JOptionPane("User name or password error.");
+                JDialog dialog = pane.createDialog("Warning");
+                dialog.setVisible(true);
+            } else {
+                frame.removeNotify();
+                frame.dispose();
+                new Homepage(murid).setVisible(true);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 

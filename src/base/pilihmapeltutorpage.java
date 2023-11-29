@@ -4,17 +4,46 @@
  */
 package base;
 
+import db.TutorDao;
+import entity.Murid;
+import entity.Tutor;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import javax.swing.JToggleButton;
+
 /**
  *
  * @author ASUS
  */
 public class PilihMapelTutorPage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form pilihmapeltutorpage
-     */
+    private Murid murid;
+    private String matapelajaran;
+    private ButtonGroup subjectButtonGroup;
+    private Tutor tutor;
+    private TutorDao tutorDao;
+    private static javax.swing.JFrame frame;
+
     public PilihMapelTutorPage() {
         initComponents();
+
+        frame = this;
+
+        subjectButtonGroup = new ButtonGroup();
+        subjectButtonGroup.add(btn_kimia);
+        subjectButtonGroup.add(btn_ekonomi);
+        subjectButtonGroup.add(btn_fisika);
+        subjectButtonGroup.add(btn_mtk);
+        subjectButtonGroup.add(btn_indo);
+        subjectButtonGroup.add(btn_inggris);
+    }
+
+    public PilihMapelTutorPage(Murid murid) {
+        this();
+        this.murid = murid;
     }
 
     /**
@@ -32,6 +61,11 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
         btn_mtk = new javax.swing.JToggleButton();
         btn_indo = new javax.swing.JToggleButton();
         btn_inggris = new javax.swing.JToggleButton();
+        btn2 = new javax.swing.JButton();
+        btn3 = new javax.swing.JButton();
+        btn4 = new javax.swing.JButton();
+        btn5 = new javax.swing.JButton();
+        btn1 = new javax.swing.JButton();
         bg_PilihMapel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,7 +135,67 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
         });
         getContentPane().add(btn_inggris, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 90, 90));
 
-        bg_PilihMapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Tutorbase.png"))); // NOI18N
+        btn2.setBackground(new java.awt.Color(117, 117, 117));
+        btn2.setForeground(new java.awt.Color(255, 255, 255));
+        btn2.setText("Pablo");
+        btn2.setBorder(null);
+        btn2.setBorderPainted(false);
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 80, 30));
+
+        btn3.setBackground(new java.awt.Color(117, 117, 117));
+        btn3.setForeground(new java.awt.Color(255, 255, 255));
+        btn3.setText("Endryco");
+        btn3.setBorder(null);
+        btn3.setBorderPainted(false);
+        btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, 80, 30));
+
+        btn4.setBackground(new java.awt.Color(117, 117, 117));
+        btn4.setForeground(new java.awt.Color(255, 255, 255));
+        btn4.setText("Tan");
+        btn4.setBorder(null);
+        btn4.setBorderPainted(false);
+        btn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 80, 30));
+
+        btn5.setBackground(new java.awt.Color(117, 117, 117));
+        btn5.setForeground(new java.awt.Color(255, 255, 255));
+        btn5.setText("Wina");
+        btn5.setBorder(null);
+        btn5.setBorderPainted(false);
+        btn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 410, 80, 30));
+
+        btn1.setBackground(new java.awt.Color(117, 117, 117));
+        btn1.setForeground(new java.awt.Color(255, 255, 255));
+        btn1.setText("Siti");
+        btn1.setBorder(null);
+        btn1.setBorderPainted(false);
+        btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 410, 80, 30));
+
+        bg_PilihMapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/TutorBG.png"))); // NOI18N
         getContentPane().add(bg_PilihMapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -109,66 +203,106 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
 
     private void btn_kimiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kimiaActionPerformed
         // TODO add your handling code here:
+        handleSubjectButtonClick(evt, "Kimia");
     }//GEN-LAST:event_btn_kimiaActionPerformed
 
     private void btn_ekonomiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ekonomiActionPerformed
         // TODO add your handling code here:
+        handleSubjectButtonClick(evt, "Ekonomi");
     }//GEN-LAST:event_btn_ekonomiActionPerformed
 
     private void btn_fisikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fisikaActionPerformed
         // TODO add your handling code here:
+        handleSubjectButtonClick(evt, "Fisika");
     }//GEN-LAST:event_btn_fisikaActionPerformed
 
     private void btn_mtkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mtkActionPerformed
         // TODO add your handling code here:
+        handleSubjectButtonClick(evt, "Matematika");
     }//GEN-LAST:event_btn_mtkActionPerformed
 
     private void btn_indoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_indoActionPerformed
         // TODO add your handling code here:
+        handleSubjectButtonClick(evt, "Bahasa Indonesia");
     }//GEN-LAST:event_btn_indoActionPerformed
 
     private void btn_inggrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inggrisActionPerformed
         // TODO add your handling code here:
+        handleSubjectButtonClick(evt, "Bahasa Inggris");
     }//GEN-LAST:event_btn_inggrisActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PilihMapelTutorPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PilihMapelTutorPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PilihMapelTutorPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PilihMapelTutorPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+        // TODO add your handling code here:
+        handleSubmit(1);
+    }//GEN-LAST:event_btn1ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PilihMapelTutorPage().setVisible(true);
+    private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
+        // TODO add your handling code here:
+        handleSubmit(5);
+    }//GEN-LAST:event_btn5ActionPerformed
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+        // TODO add your handling code here:
+        handleSubmit(2);
+    }//GEN-LAST:event_btn2ActionPerformed
+
+    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
+        // TODO add your handling code here:
+        handleSubmit(3);
+    }//GEN-LAST:event_btn3ActionPerformed
+
+    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
+        // TODO add your handling code here:
+        handleSubmit(4);
+    }//GEN-LAST:event_btn4ActionPerformed
+
+    private void handleSubjectButtonClick(java.awt.event.ActionEvent evt, String subject) {
+        JToggleButton toggleBtn = (JToggleButton) evt.getSource();
+
+        if (toggleBtn.isSelected()) {
+            matapelajaran = subject;
+        } else {
+            matapelajaran = null;
+        }
+    }
+
+    private void handleSubmit(int id_tutor) {
+        if (matapelajaran == null) {
+            JOptionPane.showMessageDialog(null, " Pilih mata pelajaran!",
+                    " Mata pelajaran", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        tutorDao = new TutorDao();
+        try {
+            tutor = tutorDao.getOneTutor(id_tutor);
+            if (tutor == null) {
+                JOptionPane.showMessageDialog(null, " Silakan pilih tutor lain!",
+                        " Tutor unavailable", JOptionPane.ERROR_MESSAGE);
+                return;
             }
-        });
+        } catch (SQLException ex) {
+            Logger.getLogger(PilihMapelTutorPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(id_tutor + " " + tutor.getNama());
+
+        if (tutor == null) {
+            JOptionPane.showMessageDialog(null, " Silakan pilih tutor lain!",
+                    " Tutor unavailable", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        frame.dispose();
+        new DetailTutor(murid, tutor, matapelajaran).setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg_PilihMapel;
+    private javax.swing.JButton btn1;
+    private javax.swing.JButton btn2;
+    private javax.swing.JButton btn3;
+    private javax.swing.JButton btn4;
+    private javax.swing.JButton btn5;
     private javax.swing.JToggleButton btn_ekonomi;
     private javax.swing.JToggleButton btn_fisika;
     private javax.swing.JToggleButton btn_indo;
