@@ -1,17 +1,21 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Kelas ini merupakan bagian dari package 'entity' dan merepresentasikan entitas Tutoring.
+ * Digunakan untuk menyimpan informasi mengenai sesi tutoring antara murid dan tutor.
  */
 package entity;
 
 import java.util.Date;
 
 /**
+ * Kelas Tutoring
  *
- * @author winat
+ * Fungsi:
+ * - Merepresentasikan data mengenai sesi tutoring antara murid dan tutor.
+ * - Menyediakan getter dan setter untuk setiap atribut.
  */
 public class Tutoring {
 
+    // Atribut-atribut yang menyimpan informasi mengenai sesi tutoring
     private int id;
     private String matpel_pilihan;
     private Murid murid;
@@ -20,7 +24,7 @@ public class Tutoring {
     private Date jadwal;
     private int biaya;
 
-    // Getter and setter methods for 'id'
+    // Getter dan setter untuk 'id'
     public int getId() {
         return id;
     }
@@ -29,7 +33,7 @@ public class Tutoring {
         this.id = id;
     }
 
-    // Getter and setter methods for 'matpel_pilihan'
+    // Getter dan setter untuk 'matpel_pilihan'
     public String getMatpelPilihan() {
         return matpel_pilihan;
     }
@@ -38,7 +42,7 @@ public class Tutoring {
         this.matpel_pilihan = matpel_pilihan;
     }
 
-    // Getter and setter methods for 'id_murid'
+    // Getter dan setter untuk 'murid'
     public Murid getMurid() {
         return murid;
     }
@@ -47,25 +51,25 @@ public class Tutoring {
         this.murid = murid;
     }
 
-    // Getter and setter methods for 'id_tutor'
+    // Getter dan setter untuk 'tutor'
     public Tutor getTutor() {
         return this.tutor;
     }
 
-    public void setTutor(Tutor nama_tutor) {
-        this.tutor = nama_tutor;
+    public void setTutor(Tutor tutor) {
+        this.tutor = tutor;
     }
 
-    // Getter and setter methods for 'jumlah_sesi'
+    // Getter dan setter untuk 'jam'
     public int getJam() {
         return jam;
     }
 
-    public void setJam(int jumlah_sesi) {
-        this.jam = jumlah_sesi;
+    public void setJam(int jam) {
+        this.jam = jam;
     }
 
-    // Getter and setter methods for 'jadwal'
+    // Getter dan setter untuk 'jadwal'
     public Date getJadwal() {
         return jadwal;
     }
@@ -74,6 +78,7 @@ public class Tutoring {
         this.jadwal = jadwal;
     }
 
+    // Getter dan setter untuk 'biaya'
     public int getBiaya() {
         return biaya;
     }

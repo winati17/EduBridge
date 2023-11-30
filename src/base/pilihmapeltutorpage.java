@@ -195,7 +195,7 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
         });
         getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 410, 80, 30));
 
-        bg_PilihMapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/TutorBG.png"))); // NOI18N
+        bg_PilihMapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/TutorbaseBG.png"))); // NOI18N
         getContentPane().add(bg_PilihMapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

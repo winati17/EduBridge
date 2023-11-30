@@ -66,7 +66,6 @@ public class PembayaranPage extends javax.swing.JFrame {
         tagihanpembayaran.setBackground(new java.awt.Color(85, 85, 85));
         tagihanpembayaran.setColumns(20);
         tagihanpembayaran.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        tagihanpembayaran.setForeground(new java.awt.Color(255, 255, 255));
         tagihanpembayaran.setRows(5);
         tagihanpembayaran.setBorder(null);
         tagihanpembayaran.setOpaque(false);
@@ -104,7 +103,7 @@ public class PembayaranPage extends javax.swing.JFrame {
             t.setTutor(tutor);
             tutoringDao.insert(t);
             JOptionPane.showMessageDialog(null, "Pembayaran sukses!",
-                    "Selamat!", JOptionPane.ERROR_MESSAGE);
+                    "Selamat!", JOptionPane.OK_OPTION);
             frame.dispose();
             new Homepage(murid).setVisible(true);
         } catch (SQLException ex) {

@@ -1,6 +1,6 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Kelas ini merupakan bagian dari package 'db' dan berfungsi sebagai data access object (DAO) untuk entitas Tutor.
+ * Digunakan untuk berinteraksi dengan database terkait data tutor.
  */
 package db;
 
@@ -13,23 +13,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Kelas TutorDao
  *
- * @author winat
+ * Fungsi:
+ * - Membuat, membaca, dan memperbarui informasi tutor dalam database.
  */
 public class TutorDao {
 
+    // Objek DB untuk mengelola koneksi database
     private final DB db;
+
+    // Objek Connection untuk koneksi ke database
     private final Connection conn;
 
+    // Konstruktor untuk inisialisasi objek DB dan koneksi
     public TutorDao() {
         db = new DB();
         conn = db.getConnection();
     }
 
+    /**
+     * Membuat data tutor baru dalam database.
+     *
+     * @param tutor Objek Tutor yang akan disimpan dalam database.
+     * @return true jika pembuatan tutor berhasil.
+     * @throws SQLException jika terjadi kesalahan SQL.
+     */
     public boolean create(Tutor tutor) throws SQLException {
-        String sql = "insert into tutor(nama,notelp,pekerjaan,tentang,hargaperjam,rating) values (?,?,?,?,?,?,?)";
-        PreparedStatement ps;
-        ps = conn.prepareStatement(sql);
+        String sql = "INSERT INTO tutor(nama, notelp, pekerjaan, tentang, hargaperjam, rating) VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, tutor.getNama());
         ps.setString(2, tutor.getNoTelp());
         ps.setString(3, tutor.getPekerjaan());
@@ -41,11 +53,18 @@ public class TutorDao {
         return true;
     }
 
+    /**
+     * Mengambil informasi satu tutor dari database berdasarkan ID.
+     *
+     * @param id ID tutor yang akan dicari.
+     * @return Objek Tutor jika ditemukan, atau null jika tidak ditemukan.
+     * @throws SQLException jika terjadi kesalahan SQL.
+     */
     public Tutor getOneTutor(int id) throws SQLException {
         PreparedStatement ps;
         ResultSet rs;
 
-        ps = conn.prepareStatement("select * from `tutor` where id=?");
+        ps = conn.prepareStatement("SELECT * FROM `tutor` WHERE id=?");
         ps.setInt(1, id);
         rs = ps.executeQuery();
 
@@ -66,8 +85,14 @@ public class TutorDao {
         return tutor;
     }
 
-    public List getAllTutor() throws SQLException {
-        String sql = "select * from tutor";
+    /**
+     * Mengambil semua informasi tutor dari database.
+     *
+     * @return List berisi objek Tutor dari semua tutor dalam database.
+     * @throws SQLException jika terjadi kesalahan SQL.
+     */
+    public List<Tutor> getAllTutor() throws SQLException {
+        String sql = "SELECT * FROM tutor";
         ResultSet rs = conn.createStatement().executeQuery(sql);
         List<Tutor> list = new ArrayList<>();
         while (rs.next()) {

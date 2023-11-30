@@ -1,15 +1,19 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Kelas ini merupakan bagian dari package 'entity' dan merepresentasikan entitas Murid.
+ * Digunakan untuk menyimpan informasi mengenai murid.
  */
 package entity;
 
 /**
+ * Kelas Murid
  *
- * @author winat
+ * Fungsi:
+ * - Merepresentasikan data mengenai murid.
+ * - Menyediakan getter dan setter untuk setiap atribut.
  */
 public class Murid {
 
+    // Atribut-atribut yang menyimpan informasi mengenai murid
     private int id;
     private String nama;
     private String email;
@@ -17,14 +21,17 @@ public class Murid {
     private String asal_sekolah;
     private String notelp;
 
+    // Konstruktor default
     public Murid() {
     }
 
+    // Konstruktor dengan parameter ID dan Nama
     public Murid(int id, String nama) {
         this.id = id;
         this.nama = nama;
     }
 
+    // Konstruktor dengan parameter lengkap
     public Murid(int id, String nama, String email, String kata_sandi, String asal_sekolah, String notelp) {
         this.id = id;
         this.nama = nama;
@@ -34,7 +41,7 @@ public class Murid {
         this.notelp = notelp;
     }
 
-    // Getter and setter methods for 'id'
+    // Getter dan setter untuk 'id'
     public int getId() {
         return id;
     }
@@ -43,7 +50,7 @@ public class Murid {
         this.id = id;
     }
 
-    // Getter and setter methods for 'nama'
+    // Getter dan setter untuk 'nama'
     public String getNama() {
         return nama;
     }
@@ -52,7 +59,7 @@ public class Murid {
         this.nama = nama;
     }
 
-    // Getter and setter methods for 'email'
+    // Getter dan setter untuk 'email'
     public String getEmail() {
         return email;
     }
@@ -61,7 +68,7 @@ public class Murid {
         this.email = email;
     }
 
-    // Getter and setter methods for 'kata_sandi'
+    // Getter dan setter untuk 'kata_sandi'
     public String getKataSandi() {
         return kata_sandi;
     }
@@ -70,7 +77,7 @@ public class Murid {
         this.kata_sandi = kata_sandi;
     }
 
-    // Getter and setter methods for 'asal_sekolah'
+    // Getter dan setter untuk 'asal_sekolah'
     public String getAsalSekolah() {
         return asal_sekolah;
     }
@@ -79,7 +86,7 @@ public class Murid {
         this.asal_sekolah = asal_sekolah;
     }
 
-    // Getter and setter methods for 'notelp'
+    // Getter dan setter untuk 'notelp'
     public String getNoTelp() {
         return notelp;
     }

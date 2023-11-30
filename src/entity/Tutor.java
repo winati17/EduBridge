@@ -1,15 +1,19 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Kelas ini merupakan bagian dari package 'entity' dan merepresentasikan entitas Tutor.
+ * Digunakan untuk menyimpan informasi mengenai tutor.
  */
 package entity;
 
 /**
+ * Kelas Tutor
  *
- * @author winat
+ * Fungsi:
+ * - Merepresentasikan data mengenai tutor.
+ * - Menyediakan getter dan setter untuk setiap atribut.
  */
 public class Tutor {
 
+    // Atribut-atribut yang menyimpan informasi mengenai tutor
     private int id;
     private String nama;
     private String notelp;
@@ -18,14 +22,17 @@ public class Tutor {
     private float rating;
     private String tentang;
 
+    // Konstruktor default
     public Tutor() {
     }
 
+    // Konstruktor dengan parameter ID dan Nama
     public Tutor(int id, String nama) {
         this.id = id;
         this.nama = nama;
     }
 
+    // Konstruktor dengan parameter lengkap
     public Tutor(int id, String nama, String notelp, String pekerjaan, int hargaperjam, float rating, String tentang) {
         this.id = id;
         this.nama = nama;
@@ -36,14 +43,16 @@ public class Tutor {
         this.tentang = tentang;
     }
 
+    // Getter dan setter untuk 'id'
     public int getId() {
-        return id; //??
+        return id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
+    // Getter dan setter untuk 'nama'
     public String getNama() {
         return nama;
     }
@@ -52,6 +61,7 @@ public class Tutor {
         this.nama = nama;
     }
 
+    // Getter dan setter untuk 'notelp'
     public String getNoTelp() {
         return notelp;
     }
@@ -60,6 +70,7 @@ public class Tutor {
         this.notelp = notelp;
     }
 
+    // Getter dan setter untuk 'pekerjaan'
     public String getPekerjaan() {
         return pekerjaan;
     }
@@ -68,6 +79,7 @@ public class Tutor {
         this.pekerjaan = pekerjaan;
     }
 
+    // Getter dan setter untuk 'hargaperjam'
     public int getHargaPerJam() {
         return hargaperjam;
     }
@@ -76,6 +88,7 @@ public class Tutor {
         this.hargaperjam = hargaperjam;
     }
 
+    // Getter dan setter untuk 'rating'
     public float getRating() {
         return rating;
     }
@@ -84,6 +97,7 @@ public class Tutor {
         this.rating = rating;
     }
 
+    // Getter dan setter untuk 'tentang'
     public String getTentang() {
         return tentang;
     }

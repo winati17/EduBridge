@@ -108,7 +108,7 @@ public class DetailTutor extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 346, -1, 20));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Nomor Telepon");
+        jLabel7.setText("tarif");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, -1, -1));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,11 +116,11 @@ public class DetailTutor extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, 20));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Nomor Telepon");
+        jLabel9.setText("tentang");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("00222");
+        jLabel10.setText("08xxxxxx");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 130, 30));
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));

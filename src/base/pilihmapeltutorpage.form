@@ -273,7 +273,7 @@
     <Component class="javax.swing.JLabel" name="bg_PilihMapel">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/EduBridge_asset/TutorBG.png"/>
+          <Image iconType="3" name="/EduBridge_asset/TutorbaseBG.png"/>
         </Property>
       </Properties>
       <Constraints>

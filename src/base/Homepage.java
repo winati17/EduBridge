@@ -112,6 +112,8 @@ public class Homepage extends javax.swing.JFrame {
 
     private void btn_orderhistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_orderhistoryActionPerformed
         // TODO add your handling code here:
+        frame.dispose();
+        new Riwayat(murid).setVisible(true);
     }//GEN-LAST:event_btn_orderhistoryActionPerformed
 
 
