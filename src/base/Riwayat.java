@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -245,6 +246,15 @@ public class Riwayat extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Riwayat.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        Icon icon = new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/tick_icon_resized.png"));
+        JOptionPane.showMessageDialog(null, 
+                    "Asik!\n"
+                    + "Kamu telah menyelesaikan tutoring\n"
+                    + "Tetap semangat dalam meraih mimpi!", 
+                    "Tutoring selesai", JOptionPane.INFORMATION_MESSAGE, icon);
+            frame.dispose();
+        new Homepage(murid).setVisible(true);
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void tf_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idActionPerformed
