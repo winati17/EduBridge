@@ -23,6 +23,8 @@ public class Homepage extends javax.swing.JFrame {
     public Homepage(Murid murid) {
         this();
         this.murid = murid;
+        
+        home.setText(murid.getNama() + "'s Home");
     }
 
     /**
@@ -34,6 +36,7 @@ public class Homepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_logout = new javax.swing.JButton();
         btn_booknow = new javax.swing.JButton();
         btn_orderhistory = new javax.swing.JButton();
         home = new javax.swing.JLabel();
@@ -43,6 +46,21 @@ public class Homepage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_logout.setBackground(new java.awt.Color(0, 102, 0));
+        btn_logout.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_logout.setForeground(new java.awt.Color(255, 255, 255));
+        btn_logout.setText("Log Out");
+        btn_logout.setBorder(null);
+        btn_logout.setBorderPainted(false);
+        btn_logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_logout.setFocusPainted(false);
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 70, 30));
 
         btn_booknow.setBackground(new java.awt.Color(46, 47, 102));
         btn_booknow.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -76,9 +94,9 @@ public class Homepage extends javax.swing.JFrame {
 
         home.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
         home.setForeground(new java.awt.Color(255, 255, 255));
-        home.setText("HOME");
+        home.setText("MURID'S HOME");
         home.setToolTipText("");
-        getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setFocusable(false);
@@ -116,10 +134,17 @@ public class Homepage extends javax.swing.JFrame {
         new Riwayat(murid).setVisible(true);
     }//GEN-LAST:event_btn_orderhistoryActionPerformed
 
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+        // TODO add your handling code here:
+        frame.dispose();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btn_logoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg_homepage;
     private javax.swing.JButton btn_booknow;
+    private javax.swing.JButton btn_logout;
     private javax.swing.JButton btn_orderhistory;
     private javax.swing.JLabel home;
     private javax.swing.JScrollPane jScrollPane1;

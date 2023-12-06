@@ -23,6 +23,7 @@ public class Tutoring {
     private int jam;
     private Date jadwal;
     private int biaya;
+    private boolean terlaksana;
 
     // Getter dan setter untuk 'id'
     public int getId() {

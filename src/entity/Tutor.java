@@ -21,6 +21,7 @@ public class Tutor {
     private int hargaperjam;
     private float rating;
     private String tentang;
+    private String kata_sandi;
 
     // Konstruktor default
     public Tutor() {
@@ -105,5 +106,13 @@ public class Tutor {
     public void setTentang(String tentang) {
         this.tentang = tentang;
     }
+    
+    // Getter dan setter untuk 'kata_sandi'
+    public String getKataSandi() {
+        return kata_sandi;
+    }
 
+    public void setKataSandi(String kata_sandi) {
+        this.kata_sandi = kata_sandi;
+    }
 }

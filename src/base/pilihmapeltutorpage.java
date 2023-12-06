@@ -44,6 +44,8 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
     public PilihMapelTutorPage(Murid murid) {
         this();
         this.murid = murid;
+        
+        namamurid.setText(murid.getNama());
     }
 
     /**
@@ -66,6 +68,8 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
         btn4 = new javax.swing.JButton();
         btn5 = new javax.swing.JButton();
         btn1 = new javax.swing.JButton();
+        btn_back = new javax.swing.JButton();
+        namamurid = new javax.swing.JLabel();
         bg_PilihMapel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -195,7 +199,24 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
         });
         getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 410, 80, 30));
 
-        bg_PilihMapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/TutorbaseBG.png"))); // NOI18N
+        btn_back.setBackground(new java.awt.Color(46, 47, 102));
+        btn_back.setForeground(new java.awt.Color(255, 255, 255));
+        btn_back.setText("Back");
+        btn_back.setBorderPainted(false);
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 160, 60));
+
+        namamurid.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        namamurid.setForeground(new java.awt.Color(255, 255, 255));
+        namamurid.setText("nama murid");
+        namamurid.setToolTipText("");
+        getContentPane().add(namamurid, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 4, -1, 50));
+
+        bg_PilihMapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Tutor base.png"))); // NOI18N
         getContentPane().add(bg_PilihMapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -256,6 +277,12 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
         handleSubmit(4);
     }//GEN-LAST:event_btn4ActionPerformed
 
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        // TODO add your handling code here:
+        frame.dispose();
+        new Homepage(murid).setVisible(true);
+    }//GEN-LAST:event_btn_backActionPerformed
+
     private void handleSubjectButtonClick(java.awt.event.ActionEvent evt, String subject) {
         JToggleButton toggleBtn = (JToggleButton) evt.getSource();
 
@@ -303,11 +330,13 @@ public class PilihMapelTutorPage extends javax.swing.JFrame {
     private javax.swing.JButton btn3;
     private javax.swing.JButton btn4;
     private javax.swing.JButton btn5;
+    private javax.swing.JButton btn_back;
     private javax.swing.JToggleButton btn_ekonomi;
     private javax.swing.JToggleButton btn_fisika;
     private javax.swing.JToggleButton btn_indo;
     private javax.swing.JToggleButton btn_inggris;
     private javax.swing.JToggleButton btn_kimia;
     private javax.swing.JToggleButton btn_mtk;
+    private javax.swing.JLabel namamurid;
     // End of variables declaration//GEN-END:variables
 }

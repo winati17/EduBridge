@@ -34,7 +34,8 @@ public class Riwayat extends javax.swing.JFrame {
         this();
         try {
             this.murid = murid;
-
+            nama.setText(murid.getNama() );
+            
             DefaultTableModel model = new DefaultTableModel();
 
             tutoringDao = new TutoringDao();
@@ -76,6 +77,9 @@ public class Riwayat extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btn_back = new javax.swing.JButton();
+        riwayatpemesanan = new javax.swing.JLabel();
+        nama = new javax.swing.JLabel();
+        btn_update = new javax.swing.JButton();
         bg_riwayat = new javax.swing.JLabel();
 
         riwayat.setBackground(new java.awt.Color(85, 85, 85));
@@ -110,21 +114,46 @@ public class Riwayat extends javax.swing.JFrame {
             }
         });
 
-        bg_riwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/Riwayat Pemesanan.png"))); // NOI18N
+        riwayatpemesanan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        riwayatpemesanan.setForeground(new java.awt.Color(255, 255, 255));
+        riwayatpemesanan.setText("Riwayat Pemesanan");
+
+        nama.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nama.setForeground(new java.awt.Color(255, 255, 255));
+        nama.setText("Nama");
+
+        btn_update.setBackground(new java.awt.Color(79, 80, 131));
+        btn_update.setForeground(new java.awt.Color(255, 255, 255));
+        btn_update.setText("Update Status");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
+
+        bg_riwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/RiwayatPemesanan.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(172, Short.MAX_VALUE)
+                .addContainerGap(167, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(riwayatpemesanan)
+                        .addGap(419, 419, 419)
+                        .addComponent(nama)
                         .addGap(115, 115, 115))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(330, 330, 330))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(105, 105, 105))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(228, 228, 228)
+                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113)
+                .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -134,11 +163,17 @@ public class Riwayat extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(161, 161, 161))
+                .addContainerGap(91, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(riwayatpemesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nama))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -155,12 +190,19 @@ public class Riwayat extends javax.swing.JFrame {
         new Homepage(murid).setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
 
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_updateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg_riwayat;
     private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_update;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel nama;
     private javax.swing.JTextArea riwayat;
+    private javax.swing.JLabel riwayatpemesanan;
     // End of variables declaration//GEN-END:variables
 }

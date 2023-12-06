@@ -69,6 +69,33 @@ public class TutoringDao {
         return list;
     }
 
+        public List getAllTutoringTutor(int id_tutor) throws SQLException {
+        String sql = "SELECT murid.nama AS nama_murid, tutor.nama AS nama_tutor, tutoring.* FROM tutoring INNER JOIN tutor ON tutor.id = tutoring.id_tutor INNER JOIN murid ON murid.id = tutoring.id_murid WHERE tutor.id = ?";
+        PreparedStatement ps;
+        List<Tutoring> list = new ArrayList<>();
+        ps = conn.prepareStatement(sql);
+        ps.setInt(1, id_tutor);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Tutoring tutoring = new Tutoring();
+            tutoring.setBiaya(rs.getInt("biaya"));
+            tutoring.setId(rs.getInt("id"));
+            tutoring.setJadwal(rs.getDate("jadwal"));
+            tutoring.setJam(rs.getInt("jam"));
+
+            Murid murid = new Murid(rs.getInt("id_murid"), rs.getString("nama_murid"));
+            tutoring.setMurid(murid);
+
+            tutoring.setMatpelPilihan(rs.getString("matpel_pilihan"));
+
+            Tutor tutor = new Tutor(rs.getInt("id_tutor"), rs.getString("nama_tutor"));
+            tutoring.setTutor(tutor);
+
+            list.add(tutoring);
+        }
+        return list;
+    }
+        
     /**
      * Menyimpan informasi tutoring ke dalam database.
      *

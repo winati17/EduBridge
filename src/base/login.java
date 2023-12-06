@@ -15,7 +15,9 @@
 package base;
 
 import db.MuridDao;
+import db.TutorDao;
 import entity.Murid;
+import entity.Tutor;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +31,9 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     private MuridDao muridDao;
+    private TutorDao tutorDao;
     private Murid murid;
+    private Tutor tutor;
     private static javax.swing.JFrame frame;
 
     /**
@@ -53,7 +57,9 @@ public class Login extends javax.swing.JFrame {
         tf_email = new javax.swing.JTextField();
         tf_password = new javax.swing.JPasswordField();
         btn_login = new javax.swing.JButton();
+        btn_tutor = new javax.swing.JButton();
         btn_register = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -93,6 +99,18 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 365, 270, 30));
 
+        btn_tutor.setBackground(new java.awt.Color(39, 38, 44));
+        btn_tutor.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        btn_tutor.setForeground(new java.awt.Color(48, 178, 234));
+        btn_tutor.setText("Login as tutor");
+        btn_tutor.setBorder(null);
+        btn_tutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tutorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_tutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 100, 30));
+
         btn_register.setBackground(new java.awt.Color(39, 38, 44));
         btn_register.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         btn_register.setForeground(new java.awt.Color(48, 178, 234));
@@ -104,6 +122,11 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 70, 20));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("You are tutor?");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 425, -1, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/login2.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, -1));
@@ -120,11 +143,27 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_passwordActionPerformed
 
     // Metode yang dipanggil ketika tombol register ditekan
-    private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
-        // TODO add your handling code here:\
-        frame.dispose();
-        new RegisterPage().setVisible(true);
-    }//GEN-LAST:event_btn_registerActionPerformed
+    private void btn_tutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tutorActionPerformed
+        // TODO add your handling code here:
+        try {
+            tutorDao = new TutorDao();
+            System.out.println(tf_email.getText() + " " + String.valueOf(tf_password.getPassword()));
+            tutor = tutorDao.getAccount(tf_email.getText(), String.valueOf(tf_password.getPassword()));
+            // Jika kredensial tidak valid, tampilkan pesan kesalahan
+            if (tutor == null) {
+                JOptionPane pane = new JOptionPane("Tutor name or password error.");
+                JDialog dialog = pane.createDialog("Warning");
+                dialog.setVisible(true);
+            } else {
+                // Jika kredensial valid, tutup frame login dan buka halaman utama (Homepage)
+                frame.removeNotify();
+                frame.dispose();
+                new HomepageTutor(tutor).setVisible(true);           
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_tutorActionPerformed
 
     // Metode yang dipanggil ketika tombol login ditekan
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
@@ -137,19 +176,25 @@ public class Login extends javax.swing.JFrame {
             murid = muridDao.getAccount(tf_email.getText(), String.valueOf(tf_password.getPassword()));
             // Jika kredensial tidak valid, tampilkan pesan kesalahan
             if (murid == null) {
-                JOptionPane pane = new JOptionPane("User name or password error.");
+                JOptionPane pane = new JOptionPane("Email or password error.");
                 JDialog dialog = pane.createDialog("Warning");
                 dialog.setVisible(true);
             } else {
                 // Jika kredensial valid, tutup frame login dan buka halaman utama (Homepage)
                 frame.removeNotify();
                 frame.dispose();
-                new Homepage(murid).setVisible(true);
+                new Homepage(murid).setVisible(true);           
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
+    // TODO add your handling code here:\
+    frame.dispose();
+        new RegisterPage().setVisible(true);
+    }//GEN-LAST:event_btn_registerActionPerformed
 
     /**
      * Metode utama yang menjalankan aplikasi.
@@ -159,7 +204,7 @@ public class Login extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
- /* Create and display the form */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new Login().setVisible(true);
         });
@@ -168,6 +213,8 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_register;
+    private javax.swing.JButton btn_tutor;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField tf_email;
     private javax.swing.JPasswordField tf_password;

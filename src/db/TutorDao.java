@@ -40,7 +40,7 @@ public class TutorDao {
      * @throws SQLException jika terjadi kesalahan SQL.
      */
     public boolean create(Tutor tutor) throws SQLException {
-        String sql = "INSERT INTO tutor(nama, notelp, pekerjaan, tentang, hargaperjam, rating) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tutor(nama, notelp, pekerjaan, tentang, hargaperjam, rating, kata_sandi) VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, tutor.getNama());
         ps.setString(2, tutor.getNoTelp());
@@ -48,6 +48,7 @@ public class TutorDao {
         ps.setString(4, tutor.getTentang());
         ps.setInt(5, tutor.getHargaPerJam());
         ps.setFloat(6, tutor.getRating());
+        ps.setString(6, tutor.getKataSandi());
         ps.execute();
 
         return true;
@@ -81,6 +82,7 @@ public class TutorDao {
         tutor.setTentang(rs.getString("tentang"));
         tutor.setRating(rs.getFloat("rating"));
         tutor.setHargaPerJam(rs.getInt("hargaperjam"));
+        tutor.setKataSandi(rs.getString("kata_sandi"));
 
         return tutor;
     }
@@ -104,9 +106,37 @@ public class TutorDao {
             tutor.setTentang(rs.getString("tentang"));
             tutor.setRating(rs.getFloat("rating"));
             tutor.setHargaPerJam(rs.getInt("hargaperjam"));
+            tutor.setKataSandi(rs.getString("kata_sandi"));
+            
             list.add(tutor);
         }
         return list;
     }
+    
+        public Tutor getAccount(String email, String password) throws SQLException {
+        PreparedStatement ps;
+        ResultSet rs;
+
+        ps = conn.prepareStatement("SELECT * FROM tutor WHERE nama=? AND kata_sandi=?");
+        ps.setString(1, email);
+        ps.setString(2, password);
+        rs = ps.executeQuery();
+
+            if (!rs.next()) {
+            return null;
+            }
+        
+        Tutor tutor = new Tutor();
+            tutor.setId(rs.getInt("id"));
+            tutor.setNama(rs.getString("nama"));
+            tutor.setNoTelp(rs.getString("notelp"));
+            tutor.setPekerjaan(rs.getString("pekerjaan"));
+            tutor.setTentang(rs.getString("tentang"));
+            tutor.setRating(rs.getFloat("rating"));
+            tutor.setHargaPerJam(rs.getInt("hargaperjam"));
+            tutor.setKataSandi(rs.getString("kata_sandi"));
+
+        return tutor;
+        }
 
 }

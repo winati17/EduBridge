@@ -6,12 +6,6 @@ package base;
 
 import entity.Murid;
 import entity.Tutor;
-import java.awt.HeadlessException;
-import java.util.Date;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
 
 /**
  *
