@@ -53,7 +53,8 @@ public class Riwayat extends javax.swing.JFrame {
                     tutoring.getTutor().getNama(),
                     tutoring.getJam(),
                     tutoring.getJadwal(),
-                    tutoring.getBiaya()
+                    tutoring.getBiaya(),
+                    tutoring.getTerlaksana()
                 });
             }
 

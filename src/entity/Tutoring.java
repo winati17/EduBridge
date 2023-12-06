@@ -87,4 +87,12 @@ public class Tutoring {
     public void setBiaya(int biaya) {
         this.biaya = biaya;
     }
+    
+    public boolean getTerlaksana() {
+        return terlaksana;
+    }
+
+    public void setTerlaksana(boolean terlaksana) {
+        this.terlaksana = terlaksana;
+    }
 }

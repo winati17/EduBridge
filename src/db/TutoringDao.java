@@ -55,7 +55,8 @@ public class TutoringDao {
             tutoring.setId(rs.getInt("id"));
             tutoring.setJadwal(rs.getDate("jadwal"));
             tutoring.setJam(rs.getInt("jam"));
-
+            tutoring.setTerlaksana(false); 
+            
             Murid murid = new Murid(rs.getInt("id_murid"), rs.getString("nama_murid"));
             tutoring.setMurid(murid);
 
@@ -104,7 +105,7 @@ public class TutoringDao {
      */
     public void insert(Tutoring tutoring) throws SQLException {
 
-        String sql = "INSERT INTO tutoring(id_murid, id_tutor, biaya, jadwal, jam, matpel_pilihan) VALUES (?,?,?,?,?,?) ";
+        String sql = "INSERT INTO tutoring(id_murid, id_tutor, biaya, jadwal, jam, matpel_pilihan, terlaksana) VALUES (?,?,?,?,?,?,?) ";
         PreparedStatement ps;
 
         ps = conn.prepareStatement(sql);
@@ -114,6 +115,7 @@ public class TutoringDao {
         ps.setDate(4, new java.sql.Date(tutoring.getJadwal().getTime()));
         ps.setInt(5, tutoring.getJam());
         ps.setString(6, tutoring.getMatpelPilihan());
+        ps.setBoolean(7, tutoring.getTerlaksana());
         ps.execute();
     }
 }
