@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,7 +41,13 @@ public class PembayaranPage extends javax.swing.JFrame {
         this.matapelajaran = matapelajaran;
         this.jam = jam;
         this.tanggal = tanggal;
-        tagihanpembayaran.append("Rp. " + String.valueOf(tutor.getHargaPerJam() * jam));
+        tagihanpembayaran.append("Harga per jam : Rp" + String.valueOf(tutor.getHargaPerJam()));
+        tagihanpembayaran.append("\n");
+        tagihanpembayaran.append("Lama sesi : " + String.valueOf(jam) + " jam");
+        tagihanpembayaran.append("\n");
+        tagihanpembayaran.append("Biaya total : Rp" + String.valueOf(tutor.getHargaPerJam() * jam) + "");
+        tagihanpembayaran.append("\n");
+        
     }
 
     /**
@@ -66,12 +73,12 @@ public class PembayaranPage extends javax.swing.JFrame {
         tagihanpembayaran.setBackground(new java.awt.Color(85, 85, 85));
         tagihanpembayaran.setColumns(20);
         tagihanpembayaran.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        tagihanpembayaran.setForeground(new java.awt.Color(255, 255, 255));
         tagihanpembayaran.setRows(5);
         tagihanpembayaran.setBorder(null);
-        tagihanpembayaran.setOpaque(false);
         jScrollPane1.setViewportView(tagihanpembayaran);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 350, 180));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 350, 180));
 
         btn_paynow.setBackground(new java.awt.Color(79, 80, 131));
         btn_paynow.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,8 +109,12 @@ public class PembayaranPage extends javax.swing.JFrame {
             t.setMurid(murid);
             t.setTutor(tutor);
             tutoringDao.insert(t);
-            JOptionPane.showMessageDialog(null, "Pembayaran sukses!",
-                    "Selamat!", JOptionPane.OK_OPTION);
+            Icon icon = new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/tick_icon_resized.png"));
+            JOptionPane.showMessageDialog(null, 
+                    "Selanjutnya, kamu akan dihubungi oleh tutor dalam 1x12 jam\n"
+                    + "Apabila ada kendala, jangan segan untuk menghubungi email kami (edubridge@gmail.com)\n"
+                    + "Semangat belajar, dan raih masa depanmu bersama EduBridge!", 
+                    "Pembayaran sukses", JOptionPane.INFORMATION_MESSAGE, icon);
             frame.dispose();
             new Homepage(murid).setVisible(true);
         } catch (SQLException ex) {
@@ -118,3 +129,4 @@ public class PembayaranPage extends javax.swing.JFrame {
     private javax.swing.JTextArea tagihanpembayaran;
     // End of variables declaration//GEN-END:variables
 }
+

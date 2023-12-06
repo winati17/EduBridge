@@ -6,6 +6,7 @@ package base;
 
 import entity.Murid;
 import entity.Tutor;
+import entity.Tutoring;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
@@ -25,6 +26,7 @@ public class JanjiWaktu extends javax.swing.JFrame {
     private int jam;
     private Date tanggal;
     private Tutor tutor;
+    private Tutoring tutoring;
     private static javax.swing.JFrame frame;
 
     public JanjiWaktu() {

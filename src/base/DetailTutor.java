@@ -38,9 +38,8 @@ public class DetailTutor extends javax.swing.JFrame {
         this.tutor = tutor;
 
         jLabel10.setText(tutor.getNoTelp());
-        jLabel9.setText(tutor.getTentang());
-        jLabel9.setText(tutor.getTentang());
-        jLabel7.setText("Rp. " + tutor.getHargaPerJam());
+        tentang.append(tutor.getTentang());
+        jLabel7.setText("Rp" + tutor.getHargaPerJam());
     }
 
     /**
@@ -52,26 +51,17 @@ public class DetailTutor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        btn_paynow = new javax.swing.JMenuItem();
         btn_bookaschedule = new javax.swing.JButton();
         btn_back = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tentang = new javax.swing.JTextArea();
         bg_detailtutor = new javax.swing.JLabel();
-
-        btn_paynow.setText("jMenuItem1");
-        btn_paynow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_paynowActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(btn_paynow);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,7 +75,7 @@ public class DetailTutor extends javax.swing.JFrame {
                 btn_bookascheduleActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_bookaschedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 120, 40));
+        getContentPane().add(btn_bookaschedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 170, 60));
 
         btn_back.setBackground(new java.awt.Color(46, 47, 102));
         btn_back.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,7 +86,7 @@ public class DetailTutor extends javax.swing.JFrame {
                 btn_backActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 120, 40));
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 160, 60));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,10 +105,6 @@ public class DetailTutor extends javax.swing.JFrame {
         jLabel8.setText("Tentang");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, 20));
 
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("tentang");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
-
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("08xxxxxx");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 130, 30));
@@ -126,6 +112,14 @@ public class DetailTutor extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Nomor Telepon");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, 20));
+
+        tentang.setBackground(new java.awt.Color(63, 61, 61));
+        tentang.setColumns(20);
+        tentang.setForeground(new java.awt.Color(255, 255, 255));
+        tentang.setRows(5);
+        jScrollPane1.setViewportView(tentang);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 246, 480, 80));
 
         bg_detailtutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/DetailTutor.png"))); // NOI18N
         bg_detailtutor.setText("jLabel1");
@@ -144,10 +138,6 @@ public class DetailTutor extends javax.swing.JFrame {
         new JanjiWaktu(murid, tutor, matapelajaran).setVisible(true);
     }//GEN-LAST:event_btn_bookascheduleActionPerformed
 
-    private void btn_paynowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paynowActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_paynowActionPerformed
-
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         // TODO add your handling code here:
         frame.dispose();
@@ -158,14 +148,13 @@ public class DetailTutor extends javax.swing.JFrame {
     private javax.swing.JLabel bg_detailtutor;
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_bookaschedule;
-    private javax.swing.JMenuItem btn_paynow;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea tentang;
     // End of variables declaration//GEN-END:variables
 }
