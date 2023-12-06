@@ -55,7 +55,7 @@ public class TutoringDao {
             tutoring.setId(rs.getInt("id"));
             tutoring.setJadwal(rs.getDate("jadwal"));
             tutoring.setJam(rs.getInt("jam"));
-            tutoring.setTerlaksana(false); 
+            tutoring.setTerlaksana(rs.getBoolean("terlaksana")); 
             
             Murid murid = new Murid(rs.getInt("id_murid"), rs.getString("nama_murid"));
             tutoring.setMurid(murid);
@@ -70,7 +70,7 @@ public class TutoringDao {
         return list;
     }
 
-        public List getAllTutoringTutor(int id_tutor) throws SQLException {
+    public List getAllTutoringTutor(int id_tutor) throws SQLException {
         String sql = "SELECT murid.nama AS nama_murid, tutor.nama AS nama_tutor, tutoring.* FROM tutoring INNER JOIN tutor ON tutor.id = tutoring.id_tutor INNER JOIN murid ON murid.id = tutoring.id_murid WHERE tutor.id = ?";
         PreparedStatement ps;
         List<Tutoring> list = new ArrayList<>();
@@ -116,6 +116,16 @@ public class TutoringDao {
         ps.setInt(5, tutoring.getJam());
         ps.setString(6, tutoring.getMatpelPilihan());
         ps.setBoolean(7, tutoring.getTerlaksana());
+        ps.execute();
+    }
+    
+    public void id(int id) throws SQLException {
+
+        String sql = "UPDATE tutoring SET terlaksana = '1' WHERE id =?";
+        PreparedStatement ps;
+        Tutoring tutoring = new Tutoring();
+        ps = conn.prepareStatement(sql);
+        ps.setBoolean(1, tutoring.getTerlaksana());
         ps.execute();
     }
 }

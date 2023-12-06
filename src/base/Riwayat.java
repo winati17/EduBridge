@@ -4,13 +4,23 @@
  */
 package base;
 
+import db.DB;
+import db.TutorDao;
 import db.TutoringDao;
 import entity.Murid;
 import entity.Tutoring;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,6 +34,8 @@ public class Riwayat extends javax.swing.JFrame {
     private List<Tutoring> tutoringList;
     private TutoringDao tutoringDao;
     private static javax.swing.JFrame frame;
+    private int id;
+   
 
     public Riwayat() {
         initComponents();
@@ -81,6 +93,8 @@ public class Riwayat extends javax.swing.JFrame {
         riwayatpemesanan = new javax.swing.JLabel();
         nama = new javax.swing.JLabel();
         btn_update = new javax.swing.JButton();
+        tf_id = new javax.swing.JTextField();
+        riwayatpemesanan1 = new javax.swing.JLabel();
         bg_riwayat = new javax.swing.JLabel();
 
         riwayat.setBackground(new java.awt.Color(85, 85, 85));
@@ -132,34 +146,54 @@ public class Riwayat extends javax.swing.JFrame {
             }
         });
 
+        tf_id.setBackground(new java.awt.Color(39, 38, 44));
+        tf_id.setForeground(new java.awt.Color(255, 255, 255));
+        tf_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_idActionPerformed(evt);
+            }
+        });
+
+        riwayatpemesanan1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        riwayatpemesanan1.setForeground(new java.awt.Color(255, 255, 255));
+        riwayatpemesanan1.setText("Id tutoring yg terlaksana:");
+
         bg_riwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EduBridge_asset/RiwayatPemesanan.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(167, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(riwayatpemesanan)
-                        .addGap(419, 419, 419)
-                        .addComponent(nama)
-                        .addGap(115, 115, 115))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(228, 228, 228)
-                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113)
-                .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(riwayatpemesanan1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(235, 235, 235)
+                        .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(riwayatpemesanan)
+                            .addGap(419, 419, 419)
+                            .addComponent(nama)
+                            .addGap(115, 115, 115))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(105, 105, 105))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(322, 322, 322)))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(bg_riwayat)
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(372, Short.MAX_VALUE)
+                    .addComponent(tf_id, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(392, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,17 +203,27 @@ public class Riwayat extends javax.swing.JFrame {
                     .addComponent(riwayatpemesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nama))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(riwayatpemesanan1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(bg_riwayat)
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(482, Short.MAX_VALUE)
+                    .addComponent(tf_id, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(26, Short.MAX_VALUE)))
         );
 
         pack();
@@ -192,8 +236,20 @@ public class Riwayat extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+
+        id = Integer.parseInt(tf_id.getText());
+        tutoringDao.id(id);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Riwayat.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_updateActionPerformed
+
+    private void tf_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_idActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -205,5 +261,7 @@ public class Riwayat extends javax.swing.JFrame {
     private javax.swing.JLabel nama;
     private javax.swing.JTextArea riwayat;
     private javax.swing.JLabel riwayatpemesanan;
+    private javax.swing.JLabel riwayatpemesanan1;
+    private javax.swing.JTextField tf_id;
     // End of variables declaration//GEN-END:variables
 }

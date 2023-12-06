@@ -48,7 +48,7 @@ public class TutorDao {
         ps.setString(4, tutor.getTentang());
         ps.setInt(5, tutor.getHargaPerJam());
         ps.setFloat(6, tutor.getRating());
-        ps.setString(6, tutor.getKataSandi());
+        ps.setString(7, tutor.getKataSandi());
         ps.execute();
 
         return true;
@@ -113,7 +113,7 @@ public class TutorDao {
         return list;
     }
     
-        public Tutor getAccount(String email, String password) throws SQLException {
+    public Tutor getAccount(String email, String password) throws SQLException {
         PreparedStatement ps;
         ResultSet rs;
 
